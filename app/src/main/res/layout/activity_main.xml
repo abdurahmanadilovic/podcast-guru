@@ -37,21 +37,36 @@
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <View
+            android:id="@+id/mini_player_background"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryDark"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/current_episode_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mini_player_margins"
+            android:text="Podcast title - Episode Title"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/mini_player_background"
+            app:layout_constraintLeft_toLeftOf="@id/mini_player_background"
+            app:layout_constraintTop_toTopOf="@id/mini_player_background" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/play_icon"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginEnd="5dp"
+            android:background="?selectableItemBackgroundBorderless"
             android:padding="0dp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_play_circle_outline_black_24dp"
-            android:tint="@color/colorAccent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:tint="@color/white"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
