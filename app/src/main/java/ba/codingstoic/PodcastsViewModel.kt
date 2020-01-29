@@ -15,12 +15,13 @@ class PodcastsViewModel : ViewModel() {
     val podcasts: LiveData<List<Podcast>> = _podcasts
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
+    private val podcastRepository = PodcastRepository()
 
     fun getPodcasts() {
         _isLoading.value = true
         viewModelScope.launch {
             delay(TimeUnit.SECONDS.toMillis(2))
-            _podcasts.value = listOf(Podcast("The Joe Rogan experience"))
+            _podcasts.value = podcastRepository.getPodcasts()
             _isLoading.value = false
         }
     }
