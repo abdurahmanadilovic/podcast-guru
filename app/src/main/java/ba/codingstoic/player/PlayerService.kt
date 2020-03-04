@@ -21,6 +21,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.media.MediaBrowserServiceCompat
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.source.ConcatenatingMediaSource
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
 import org.koin.android.ext.android.inject
 
@@ -107,6 +108,10 @@ class PlayerService : MediaBrowserServiceCompat() {
             playerNotificationManager.setPlayer(exoPlayer)
             playerNotificationManager.setMediaSessionToken(it)
         }
+
+        val mediaSource = ConcatenatingMediaSource()
+        exoPlayer.prepare(mediaSource)
+        exoPlayer.playWhenReady = true
     }
 
     private fun shouldCreateNowPlayingChannel(notificationManager: NotificationManagerCompat) =
