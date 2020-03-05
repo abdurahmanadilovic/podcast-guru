@@ -108,10 +108,6 @@ class PlayerService : MediaBrowserServiceCompat() {
             playerNotificationManager.setPlayer(exoPlayer)
             playerNotificationManager.setMediaSessionToken(it)
         }
-
-        val mediaSource = ConcatenatingMediaSource()
-        exoPlayer.prepare(mediaSource)
-        exoPlayer.playWhenReady = true
     }
 
     private fun shouldCreateNowPlayingChannel(notificationManager: NotificationManagerCompat) =
