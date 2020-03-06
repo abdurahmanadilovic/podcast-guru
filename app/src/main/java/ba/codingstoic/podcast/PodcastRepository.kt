@@ -1,4 +1,4 @@
-package ba.codingstoic
+package ba.codingstoic.podcast
 
 class PodcastRepository {
     fun getPodcasts(): List<Podcast> =

@@ -7,15 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import ba.codingstoic.player.PlayerViewModel
+import ba.codingstoic.podcast.PodcastsViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 /**
  * A simple [Fragment] subclass.
  */
 class MainFragment : Fragment() {
-    lateinit var viewModel: PodcastsViewModel
+    private val podcastsViewModel: PodcastsViewModel by viewModel()
+    private val playerViewModel: PlayerViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,22 +27,17 @@ class MainFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(PodcastsViewModel::class.java)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+        podcastsViewModel.isLoading.observe(viewLifecycleOwner, Observer {
             loading_indicator.visibility = if (it) View.VISIBLE else View.GONE
             content_group.visibility = if (it) View.GONE else View.VISIBLE
         })
-        viewModel.podcasts.observe(viewLifecycleOwner, Observer {
+        podcastsViewModel.podcasts.observe(viewLifecycleOwner, Observer {
             podcast_title.text = it.first().name
         })
 
-        viewModel.getPodcasts()
+        podcastsViewModel.getPodcasts()
     }
 }

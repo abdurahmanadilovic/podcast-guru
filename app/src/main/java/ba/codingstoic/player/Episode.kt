@@ -1,4 +1,3 @@
 package ba.codingstoic.player
 
-class Episode {
-}
+data class Episode(val id: Long, val url: String)

@@ -1,4 +1,4 @@
-package ba.codingstoic
+package ba.codingstoic.podcast
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
