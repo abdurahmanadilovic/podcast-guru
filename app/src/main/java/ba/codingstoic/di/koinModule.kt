@@ -9,6 +9,7 @@ import com.google.android.exoplayer2.audio.AudioAttributes
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
+import com.google.android.exoplayer2.util.Util
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -25,13 +26,9 @@ val koinModule = module {
         }
     }
 
-    single<ExoPlayer> {
-        ExoPlayerFactory.newSimpleInstance(androidContext()).apply {
-            setAudioAttributes(
-                AudioAttributes.Builder().setContentType(C.CONTENT_TYPE_MUSIC)
-                    .setUsage(C.USAGE_MEDIA).build(), true
-            )
-        }
+    single(named("userAgent")) {
+        val userAgent = Util.getUserAgent(androidContext(), "Podcast guru android app")
+        userAgent
     }
 
     single<DataSource.Factory> {

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import ba.codingstoic.player.Episode
 import ba.codingstoic.player.PlayerViewModel
 import ba.codingstoic.podcast.PodcastsViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -39,5 +40,14 @@ class MainFragment : Fragment() {
         })
 
         podcastsViewModel.getPodcasts()
+
+        playerViewModel.play(
+            listOf(
+                Episode(
+                    1,
+                    "http://podcasts.joerogan.net/podcasts/andrew-santino-8"
+                )
+            )
+        )
     }
 }
