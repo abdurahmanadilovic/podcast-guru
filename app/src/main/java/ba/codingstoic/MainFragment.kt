@@ -45,7 +45,7 @@ class MainFragment : Fragment() {
             listOf(
                 Episode(
                     1,
-                    "http://podcasts.joerogan.net/podcasts/andrew-santino-8"
+                    "https://traffic.libsyn.com/joeroganexp/p1438a.mp3"
                 )
             )
         )

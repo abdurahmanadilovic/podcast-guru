@@ -73,6 +73,7 @@ class PlayerService : MediaBrowserServiceCompat() {
             createNowPlayingChannel(notificationManager)
         }
 
+
         sessionToken?.let {
             val playerNotificationManager = PlayerNotificationManager(this, nowPlayingChannelId,
                 nowPlayingNotificationId,
