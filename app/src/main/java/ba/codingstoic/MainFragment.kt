@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import ba.codingstoic.player.PlayerViewModel
-import ba.codingstoic.podcast.Podcast
+import ba.codingstoic.podcast.PodcastItem
+import ba.codingstoic.podcast.PodcastSectionHeader
 import ba.codingstoic.podcast.PodcastsViewModel
-import com.github.vivchar.rendererrecyclerviewadapter.RendererRecyclerViewAdapter
-import com.github.vivchar.rendererrecyclerviewadapter.binder.ViewBinder
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.Section
+import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,7 +24,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class MainFragment : Fragment() {
     private val podcastsViewModel: PodcastsViewModel by viewModel()
-
     private val playerViewModel: PlayerViewModel by viewModel()
 
     override fun onCreateView(
@@ -35,39 +36,24 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = RendererRecyclerViewAdapter().apply {
-            registerRenderer(PodcastRowBinder(object : PodcastRowClickListener {
-                override fun podcastClicked(podcast: Podcast) {
-                    playerViewModel.play(podcast.episodes)
-                }
-            }))
-        }
+        val newAdapter = GroupAdapter<GroupieViewHolder>()
+        val hotRightNowSection = Section()
+        hotRightNowSection.setHeader(PodcastSectionHeader("Hot"))
+        newAdapter.add(hotRightNowSection)
 
         podcastsViewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            podcast_rv.visibility = if (it) View.INVISIBLE else View.VISIBLE
             loading_indicator.visibility = if (it) View.VISIBLE else View.GONE
         })
 
-        podcastsViewModel.podcasts.observe(viewLifecycleOwner, Observer {
-            adapter.setItems(it)
-            adapter.notifyDataSetChanged()
+        podcastsViewModel.podcasts.observe(viewLifecycleOwner, Observer { list ->
+            hotRightNowSection.clear()
+            hotRightNowSection.addAll(list.map { PodcastItem(it) })
         })
 
         podcast_rv.layoutManager = LinearLayoutManager(context)
-        podcast_rv.adapter = adapter
+        podcast_rv.adapter = newAdapter
 
         podcastsViewModel.getPodcasts()
     }
-
-    interface PodcastRowClickListener {
-        fun podcastClicked(podcast: Podcast)
-    }
-
-    class PodcastRowBinder(podcastRowClickListener : PodcastRowClickListener):
-        ViewBinder<Podcast>(R.layout.podcast_row, Podcast::class.java,
-        { model, finder, payloads ->
-            finder.setText(R.id.podcast_title, model.name)
-            finder.setOnClickListener(R.id.podcast_root) {
-                podcastRowClickListener.podcastClicked(model)
-            }
-        })
 }
