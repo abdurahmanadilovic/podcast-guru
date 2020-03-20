@@ -38,8 +38,14 @@ class MainFragment : Fragment() {
 
         val newAdapter = GroupAdapter<GroupieViewHolder>()
         val hotRightNowSection = Section()
+
         hotRightNowSection.setHeader(PodcastSectionHeader("Hot"))
         newAdapter.add(hotRightNowSection)
+        newAdapter.setOnItemClickListener { item, view ->
+            if (item is PodcastItem) {
+                playerViewModel.play(item.podcast.episodes)
+            }
+        }
 
         podcastsViewModel.isLoading.observe(viewLifecycleOwner, Observer {
             podcast_rv.visibility = if (it) View.INVISIBLE else View.VISIBLE

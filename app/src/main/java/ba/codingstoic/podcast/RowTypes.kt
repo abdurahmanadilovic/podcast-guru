@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.podcast_section_header.*
  * Created by Abdurahman Adilovic on 3/19/20.
  */
 
-class PodcastItem(private val podcast: Podcast) : Item() {
+class PodcastItem(val podcast: Podcast) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.podcast_title.text = podcast.name
     }
