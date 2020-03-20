@@ -38,10 +38,14 @@ class MainFragment : Fragment() {
 
         val newAdapter = GroupAdapter<GroupieViewHolder>()
         val hotRightNowSection = Section()
-
         hotRightNowSection.setHeader(PodcastSectionHeader("Hot"))
+        val newest = Section()
+        newest.setHeader(PodcastSectionHeader("Newest"))
+
         newAdapter.add(hotRightNowSection)
-        newAdapter.setOnItemClickListener { item, view ->
+        newAdapter.add(newest)
+
+        newAdapter.setOnItemClickListener { item, _ ->
             if (item is PodcastItem) {
                 playerViewModel.play(item.podcast.episodes)
             }
@@ -54,7 +58,9 @@ class MainFragment : Fragment() {
 
         podcastsViewModel.podcasts.observe(viewLifecycleOwner, Observer { list ->
             hotRightNowSection.clear()
-            hotRightNowSection.addAll(list.map { PodcastItem(it) })
+            hotRightNowSection.addAll(list.hot.map { PodcastItem(it) })
+            newest.clear()
+            newest.addAll(list.newest.map { PodcastItem(it) })
         })
 
         podcast_rv.layoutManager = LinearLayoutManager(context)

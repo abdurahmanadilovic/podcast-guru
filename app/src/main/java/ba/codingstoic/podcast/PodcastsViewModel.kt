@@ -8,8 +8,8 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 class PodcastsViewModel : androidx.lifecycle.ViewModel() {
-    private val _podcasts = MutableLiveData<List<Podcast>>()
-    val podcasts: LiveData<List<Podcast>> = _podcasts
+    private val _podcasts = MutableLiveData<PodcastCategories>()
+    val podcasts: LiveData<PodcastCategories> = _podcasts
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
     private val podcastRepository = PodcastRepository()
@@ -18,8 +18,12 @@ class PodcastsViewModel : androidx.lifecycle.ViewModel() {
         _isLoading.value = true
         viewModelScope.launch {
             delay(TimeUnit.SECONDS.toMillis(2))
-            _podcasts.value = podcastRepository.getPodcasts()
+            val hotPodcasts = podcastRepository.getHotPodcasts()
+            val newestPodcasts = podcastRepository.getNewestPodcasts()
+            _podcasts.value = PodcastCategories(hotPodcasts, newestPodcasts)
             _isLoading.value = false
         }
     }
 }
+
+data class PodcastCategories(val hot: List<Podcast>, val newest: List<Podcast>)
