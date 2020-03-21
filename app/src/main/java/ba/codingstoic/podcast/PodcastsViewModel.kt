@@ -3,27 +3,26 @@ package ba.codingstoic.podcast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.withContext
 
-class PodcastsViewModel : androidx.lifecycle.ViewModel() {
-    private val _podcasts = MutableLiveData<PodcastCategories>()
-    val podcasts: LiveData<PodcastCategories> = _podcasts
+class PodcastsViewModel(private val podcastRepository: PodcastRepository) :
+    androidx.lifecycle.ViewModel() {
+    private val _podcasts = MutableLiveData<List<Podcast>>()
+    val podcasts: LiveData<List<Podcast>> = _podcasts
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
-    private val podcastRepository = PodcastRepository()
 
     fun getPodcasts() {
         _isLoading.value = true
         viewModelScope.launch {
-            delay(TimeUnit.SECONDS.toMillis(2))
-            val hotPodcasts = podcastRepository.getHotPodcasts()
-            val newestPodcasts = podcastRepository.getNewestPodcasts()
-            _podcasts.value = PodcastCategories(hotPodcasts, newestPodcasts)
+            val podcasts = withContext(Dispatchers.IO) {
+                podcastRepository.getTopPodcasts()
+            }
+            _podcasts.value = podcasts
             _isLoading.value = false
         }
     }
 }
 
-data class PodcastCategories(val hot: List<Podcast>, val newest: List<Podcast>)

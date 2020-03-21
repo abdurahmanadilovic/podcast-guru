@@ -1,6 +1,8 @@
 package ba.codingstoic.di
 
+import ba.codingstoic.data.GPodderPodcastSource
 import ba.codingstoic.player.PlayerViewModel
+import ba.codingstoic.podcast.PodcastRepository
 import ba.codingstoic.podcast.PodcastsViewModel
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayer
@@ -14,6 +16,8 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 val koinModule = module {
@@ -40,11 +44,27 @@ val koinModule = module {
         )
     }
 
+    single<Retrofit> {
+        Retrofit.Builder()
+            .baseUrl("http://gpodder.net/")
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+    }
+
+    single<GPodderPodcastSource> {
+        val retrofit: Retrofit = get()
+        retrofit.create(GPodderPodcastSource::class.java)
+    }
+
+    single {
+        PodcastRepository(get())
+    }
+
     viewModel {
         PlayerViewModel(get(), get())
     }
 
     viewModel {
-        PodcastsViewModel()
+        PodcastsViewModel(get())
     }
 }
