@@ -2,8 +2,8 @@ package ba.codingstoic.di
 
 import ba.codingstoic.data.GPodderPodcastSource
 import ba.codingstoic.player.PlayerViewModel
+import ba.codingstoic.podcast.PodcastListViewModel
 import ba.codingstoic.podcast.PodcastRepository
-import ba.codingstoic.podcast.PodcastsViewModel
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.ExoPlayerFactory
@@ -12,6 +12,8 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -45,7 +47,12 @@ val koinModule = module {
     }
 
     single<Retrofit> {
+        val client = OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }).build()
+
         Retrofit.Builder()
+            .client(client)
             .baseUrl("http://gpodder.net/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
@@ -65,6 +72,6 @@ val koinModule = module {
     }
 
     viewModel {
-        PodcastsViewModel(get())
+        PodcastListViewModel(get())
     }
 }

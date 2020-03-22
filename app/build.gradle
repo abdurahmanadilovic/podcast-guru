@@ -52,6 +52,7 @@ dependencies {
     //network
     implementation 'com.squareup.retrofit2:retrofit:2.7.2'
     implementation 'com.squareup.retrofit2:converter-moshi:2.7.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
 
     // exoplayer
     implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
@@ -68,6 +69,7 @@ dependencies {
     //ui
     implementation "com.xwray:groupie:2.7.0"
     implementation "com.xwray:groupie-kotlin-android-extensions:2.7.0"
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'

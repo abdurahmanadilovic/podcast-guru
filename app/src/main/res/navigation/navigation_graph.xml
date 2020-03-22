@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="ba.codingstoic.MainFragment"
+        android:name="ba.codingstoic.podcast.PodcastListFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/podcast_list_fragment" />
 </navigation>
