@@ -1,5 +1,7 @@
 package ba.codingstoic.podcast
 
+import ba.codingstoic.data.GPodderEpisodeModel
+import ba.codingstoic.data.GPodderPodcastModel
 import ba.codingstoic.data.GPodderPodcastSource
 import ba.codingstoic.player.Episode
 
@@ -12,16 +14,11 @@ class PodcastRepository(private val podcastSource: GPodderPodcastSource) {
         }
     }
 
-    fun getHotPodcasts(): List<Podcast> =
-        listOf(
-            Podcast("The Joe Rogan experience", listOf(Episode(1, ""))),
-            Podcast("What will you learn", listOf(Episode(2, "")))
-        )
+    suspend fun getPodcast(id: String): GPodderPodcastModel {
+        return podcastSource.getPodcast(id)
+    }
 
-    fun getNewestPodcasts(): List<Podcast> =
-        listOf(
-            Podcast("Corona podcast", listOf(Episode(3, ""))),
-            Podcast("Year 2020 podcast", listOf(Episode(4, "")))
-        )
-
+    fun getEpisodes(podcastId: String): List<GPodderEpisodeModel> {
+        return listOf()
+    }
 }
