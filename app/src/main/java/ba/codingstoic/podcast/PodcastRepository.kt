@@ -5,12 +5,12 @@ import ba.codingstoic.data.GPodderPodcastModel
 import ba.codingstoic.data.GPodderPodcastSource
 import ba.codingstoic.player.Episode
 
-data class Podcast(val name: String, val episodes: List<Episode>)
+data class Podcast(val name: String, val imageUrl: String, val episodes: List<Episode>)
 
 class PodcastRepository(private val podcastSource: GPodderPodcastSource) {
     suspend fun getTopPodcasts(count: Int = 10): List<Podcast> {
         return podcastSource.getTopPodcasts(count).map {
-            Podcast(it.title, listOf())
+            Podcast(it.title, it.logo_url, listOf())
         }
     }
 

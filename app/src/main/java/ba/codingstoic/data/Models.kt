@@ -12,7 +12,8 @@ data class GPodderPodcastModel(
     val url: String,
     val subscribers: Int,
     val position_last_week: Int,
-    val mygpo_link: String
+    val mygpo_link: String,
+    val logo_url: String
 )
 
 data class GPodderEpisodeModel(
