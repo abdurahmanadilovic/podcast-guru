@@ -19,6 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PodcastDetailsFragment : Fragment() {
     private val podcastDetailsViewModel by viewModel<PodcastDetailsViewModel>()
+    lateinit var podcastId: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +27,11 @@ class PodcastDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.podcast_details_view, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        podcastId = arguments?.getString(podcastIdArgument) ?: ""
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,13 +47,17 @@ class PodcastDetailsFragment : Fragment() {
         })
 
         podcast_details_swipe_refresh.setOnRefreshListener {
-            podcastDetailsViewModel.getPodcastDetails()
+            podcastDetailsViewModel.getPodcastDetails(podcastId)
         }
 
         podcast_details_rv.adapter = adapter
         podcast_details_rv.layoutManager = LinearLayoutManager(context)
 
-        podcastDetailsViewModel.getPodcastDetails()
+        podcastDetailsViewModel.getPodcastDetails(podcastId)
+    }
+
+    companion object {
+        const val podcastIdArgument = "podcast_id"
     }
 
 }

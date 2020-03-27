@@ -2,6 +2,7 @@ package ba.codingstoic.di
 
 import ba.codingstoic.data.GPodderPodcastSource
 import ba.codingstoic.player.PlayerViewModel
+import ba.codingstoic.podcast.PodcastDetailsViewModel
 import ba.codingstoic.podcast.PodcastListViewModel
 import ba.codingstoic.podcast.PodcastRepository
 import com.google.android.exoplayer2.C
@@ -73,5 +74,9 @@ val koinModule = module {
 
     viewModel {
         PodcastListViewModel(get())
+    }
+
+    viewModel {
+        PodcastDetailsViewModel(get())
     }
 }

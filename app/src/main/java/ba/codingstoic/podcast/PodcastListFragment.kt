@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ba.codingstoic.R
 import ba.codingstoic.player.PlayerViewModel
@@ -43,7 +45,10 @@ class PodcastListFragment : Fragment() {
 
         newAdapter.setOnItemClickListener { item, _ ->
             if (item is PodcastItem) {
-                playerViewModel.play(item.podcast.episodes)
+                findNavController().navigate(
+                    R.id.action_mainFragment_to_podcastDetailsFragment,
+                    bundleOf(PodcastDetailsFragment.podcastIdArgument to item.podcast.urlId)
+                )
             }
         }
 
