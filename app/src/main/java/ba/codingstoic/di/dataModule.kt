@@ -1,10 +1,11 @@
 package ba.codingstoic.di
 
+import android.content.Context
+import android.content.SharedPreferences
+import android.util.Base64
 import ba.codingstoic.data.GPodderPodcastSource
-import ba.codingstoic.player.PlayerViewModel
-import ba.codingstoic.podcast.PodcastDetailsViewModel
-import ba.codingstoic.podcast.PodcastListViewModel
 import ba.codingstoic.podcast.PodcastRepository
+import ba.codingstoic.user.UserRepository
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.ExoPlayerFactory
@@ -13,17 +14,46 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 
-val koinModule = module {
+val dataModule = module {
+    single<SharedPreferences> {
+        androidContext().getSharedPreferences("shared-prefs", Context.MODE_PRIVATE)
+    }
+
+    single {
+        UserRepository(get(), get())
+    }
+
+    single<Interceptor> {
+        val userRepository = get<UserRepository>()
+        object : Interceptor {
+            override fun intercept(chain: Interceptor.Chain): Response {
+                val newRequest = chain.request().newBuilder()
+                if (chain.request().headers["BasicAuth"] != null) {
+                    newRequest.header(
+                        "Authorization",
+                        "Basic ${Base64.encodeToString("Test:Test".toByteArray(), Base64.NO_WRAP)}"
+                    )
+                } else {
+                    newRequest.header("sessionid", userRepository.getCookie())
+                }
+
+                return chain.proceed(chain.request())
+            }
+
+        }
+    }
+
     single<ExoPlayer> {
         ExoPlayerFactory.newSimpleInstance(androidContext()).apply {
             setAudioAttributes(
@@ -48,9 +78,11 @@ val koinModule = module {
     }
 
     single<Retrofit> {
-        val client = OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }).build()
+        val userRepository = get<UserRepository>()
+        val client = OkHttpClient.Builder().addInterceptor(get<Interceptor>())
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }).build()
 
         Retrofit.Builder()
             .client(client)
@@ -68,15 +100,4 @@ val koinModule = module {
         PodcastRepository(get())
     }
 
-    viewModel {
-        PlayerViewModel(get(), get())
-    }
-
-    viewModel {
-        PodcastListViewModel(get())
-    }
-
-    viewModel {
-        PodcastDetailsViewModel(get())
-    }
 }
