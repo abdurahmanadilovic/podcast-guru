@@ -78,7 +78,6 @@ val dataModule = module {
     }
 
     single<Retrofit> {
-        val userRepository = get<UserRepository>()
         val client = OkHttpClient.Builder().addInterceptor(get<Interceptor>())
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY

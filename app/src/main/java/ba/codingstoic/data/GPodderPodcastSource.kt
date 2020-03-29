@@ -8,7 +8,7 @@ import retrofit2.http.*
  */
 
 interface GPodderPodcastSource {
-    @POST("auth/{username}/login.json")
+    @POST("api/2/auth/{username}/login.json")
     @Headers("BasicAuth: true")
     suspend fun login(@Path("username") username: String): Response<Void>
 
