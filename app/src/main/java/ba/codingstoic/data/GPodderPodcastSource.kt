@@ -9,8 +9,10 @@ import retrofit2.http.*
 
 interface GPodderPodcastSource {
     @POST("api/2/auth/{username}/login.json")
-    @Headers("BasicAuth: true")
-    suspend fun login(@Path("username") username: String): Response<Void>
+    suspend fun login(
+        @Header("Authorization") authHeader: String,
+        @Path("username") username: String
+    ): Response<Void>
 
     @GET("toplist/{count}.json")
     suspend fun getTopPodcasts(@Path("count") count: Int): List<GPodderPodcastModel>
