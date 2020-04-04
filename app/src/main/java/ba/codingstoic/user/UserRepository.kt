@@ -18,12 +18,19 @@ class UserRepository(
         val credentials = "$username:$password"
         val basic = "Basic " + Base64.encodeToString(credentials.toByteArray(), Base64.NO_WRAP)
         val response = gPodderPodcastSource.login(authHeader = basic, username = username)
-        val cookie = response.headers()["sessionId"]
-        cookie?.let {
-            sharedPreferences.edit {
-                putString("cookie", it)
+        val cookieValues = response.headers()["Set-Cookie"]?.split(";")
+        cookieValues?.let {
+            val sessionId = it.firstOrNull()
+            val expires = it.getOrNull(1)
+            sessionId?.let {
+                sharedPreferences.edit {
+                    putString("cookie", it)
+                }
+                return
             }
         }
+
+        throw IllegalStateException("Could not read sessionId!")
     }
 
     fun getCookie(): String {
