@@ -1,8 +1,6 @@
 package ba.codingstoic.user
 
-import android.content.SharedPreferences
 import android.util.Base64
-import androidx.core.content.edit
 import ba.codingstoic.data.GPodderPodcastSource
 
 
@@ -10,10 +8,11 @@ import ba.codingstoic.data.GPodderPodcastSource
  * Created by Abdurahman Adilovic on 3/28/20.
  */
 
-class UserRepository(
+class UserSession(
     private val gPodderPodcastSource: GPodderPodcastSource,
-    private val sharedPreferences: SharedPreferences
+    private val cookieManager: CookieManager
 ) {
+
     suspend fun loginUser(username: String, password: String) {
         val credentials = "$username:$password"
         val basic = "Basic " + Base64.encodeToString(credentials.toByteArray(), Base64.NO_WRAP)
@@ -23,9 +22,7 @@ class UserRepository(
             val sessionId = it.firstOrNull()
             val expires = it.getOrNull(1)
             sessionId?.let {
-                sharedPreferences.edit {
-                    putString("cookie", it)
-                }
+                cookieManager.storeCookie(it)
                 return
             }
         }
@@ -33,7 +30,7 @@ class UserRepository(
         throw IllegalStateException("Could not read sessionId!")
     }
 
-    fun getCookie(): String {
-        return sharedPreferences.getString("cookie", "") ?: ""
+    fun isLoggedIn(): Boolean {
+        return cookieManager.getCookie().isNotBlank()
     }
 }

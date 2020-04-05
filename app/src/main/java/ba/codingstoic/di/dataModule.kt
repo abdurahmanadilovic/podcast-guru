@@ -5,7 +5,8 @@ import android.content.SharedPreferences
 import android.util.Base64
 import ba.codingstoic.data.GPodderPodcastSource
 import ba.codingstoic.podcast.PodcastRepository
-import ba.codingstoic.user.UserRepository
+import ba.codingstoic.user.CookieManager
+import ba.codingstoic.user.UserSession
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.ExoPlayerFactory
@@ -31,11 +32,15 @@ val dataModule = module {
     }
 
     single {
-        UserRepository(get(), get())
+        CookieManager(get())
+    }
+
+    single {
+        UserSession(get(), get())
     }
 
     single<Interceptor> {
-        val userRepository = get<UserRepository>()
+        val cookieManager = get<CookieManager>()
         object : Interceptor {
             override fun intercept(chain: Interceptor.Chain): Response {
                 val newRequest = chain.request().newBuilder()
@@ -45,7 +50,7 @@ val dataModule = module {
                         "Basic ${Base64.encodeToString("Test:Test".toByteArray(), Base64.NO_WRAP)}"
                     )
                 } else {
-                    newRequest.header("sessionid", userRepository.getCookie())
+                    newRequest.header("sessionid", cookieManager.getCookie())
                 }
 
                 return chain.proceed(chain.request())
