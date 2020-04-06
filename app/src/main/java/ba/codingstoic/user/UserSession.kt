@@ -21,9 +21,13 @@ class UserSession(
         cookieValues?.let {
             val sessionId = it.firstOrNull()
             val expires = it.getOrNull(1)
-            sessionId?.let {
-                cookieManager.storeCookie(it)
-                return
+
+            sessionId?.let { sessionId ->
+                expires?.let { expiresAt ->
+                    cookieManager.storeExpiresAt(expiresAt)
+                    cookieManager.storeCookie(sessionId)
+                    return
+                }
             }
         }
 

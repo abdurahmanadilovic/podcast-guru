@@ -9,6 +9,7 @@ import androidx.core.content.edit
 
 class CookieManager(private val sharedPreferences: SharedPreferences) {
     private val cookiePrefsKey = "cookie"
+    private val cookieExpiresPrefsKey = "cookie-expires"
 
     fun storeCookie(cookie: String) {
         sharedPreferences.edit {
@@ -18,5 +19,15 @@ class CookieManager(private val sharedPreferences: SharedPreferences) {
 
     fun getCookie(): String {
         return sharedPreferences.getString(cookiePrefsKey, "") ?: ""
+    }
+
+    fun storeExpiresAt(date: String) {
+        sharedPreferences.edit {
+            putString(cookieExpiresPrefsKey, date)
+        }
+    }
+
+    fun getExpiresAt(): String? {
+        return sharedPreferences.getString(cookieExpiresPrefsKey, null)
     }
 }

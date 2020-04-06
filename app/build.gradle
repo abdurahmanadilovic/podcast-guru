@@ -32,7 +32,7 @@ android {
 
 dependencies {
     def nav_version = "2.2.1"
-    def exoplayer_version = '2.10.5'
+    def exoplayer_version = '2.11.3'
     def lifecycle_version = "2.2.0"
     def kotlin_core = "1.1.0"
     def koin_version = "2.0.1"
@@ -40,7 +40,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$kotlin_core"
-    implementation "androidx.core:core-ktx:$kotlin_core"
+    implementation "androidx.core:core-ktx:1.2.0"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
@@ -48,6 +48,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+    // date time
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.3'
 
     //network
     implementation 'com.squareup.retrofit2:retrofit:2.7.2'
