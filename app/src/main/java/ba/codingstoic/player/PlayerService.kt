@@ -21,7 +21,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.media.MediaBrowserServiceCompat
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.source.ConcatenatingMediaSource
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
 import org.koin.android.ext.android.inject
 
@@ -78,29 +77,29 @@ class PlayerService : MediaBrowserServiceCompat() {
             val playerNotificationManager = PlayerNotificationManager(this, nowPlayingChannelId,
                 nowPlayingNotificationId,
                 object : PlayerNotificationManager.MediaDescriptionAdapter {
-                    override fun getCurrentContentText(player: Player?): String? {
+                    override fun getCurrentContentText(player: Player): String? {
                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
 
-                    override fun getCurrentContentTitle(player: Player?): String {
+                    override fun getCurrentContentTitle(player: Player): String {
                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
 
                     override fun getCurrentLargeIcon(
-                        player: Player?,
-                        callback: PlayerNotificationManager.BitmapCallback?
+                        player: Player,
+                        callback: PlayerNotificationManager.BitmapCallback
                     ): Bitmap? {
                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
 
-                    override fun createCurrentContentIntent(player: Player?): PendingIntent? {
+                    override fun createCurrentContentIntent(player: Player): PendingIntent? {
                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
 
                 }, object : PlayerNotificationManager.NotificationListener {
                     override fun onNotificationPosted(
                         notificationId: Int,
-                        notification: Notification?,
+                        notification: Notification,
                         ongoing: Boolean
                     ) {
                     }

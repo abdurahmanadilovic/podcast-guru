@@ -15,7 +15,6 @@ import ba.codingstoic.player.PlayerViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
-import kotlinx.android.synthetic.main.podcast_details_view.*
 import kotlinx.android.synthetic.main.podcast_list_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -65,8 +64,8 @@ class PodcastListFragment : Fragment() {
             topSection.addAll(list.map { PodcastItem(it) })
         })
 
-        podcast_details_rv.layoutManager = LinearLayoutManager(context)
-        podcast_details_rv.adapter = newAdapter
+        podcast_list_rv.layoutManager = LinearLayoutManager(context)
+        podcast_list_rv.adapter = newAdapter
 
         podcastListViewModel.getPodcasts()
     }
