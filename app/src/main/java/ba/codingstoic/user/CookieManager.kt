@@ -10,6 +10,7 @@ import androidx.core.content.edit
 class CookieManager(private val sharedPreferences: SharedPreferences) {
     private val cookiePrefsKey = "cookie"
     private val cookieExpiresPrefsKey = "cookie-expires"
+    private val usernamePasswordKey = "username-pass"
 
     fun storeCookie(cookie: String) {
         sharedPreferences.edit {
@@ -29,5 +30,17 @@ class CookieManager(private val sharedPreferences: SharedPreferences) {
 
     fun getExpiresAt(): String? {
         return sharedPreferences.getString(cookieExpiresPrefsKey, null)
+    }
+
+    fun storeUserNameAndPassword(pair: Pair<String, String>) {
+        sharedPreferences.edit {
+            putString(usernamePasswordKey, "${pair.first}:${pair.second}")
+        }
+    }
+
+    fun getUserNameAndPassowrd(): Pair<String, String> {
+        val values =
+            sharedPreferences.getString(usernamePasswordKey, ":")?.split(":") ?: listOf("", "")
+        return Pair(values[0], values[1])
     }
 }

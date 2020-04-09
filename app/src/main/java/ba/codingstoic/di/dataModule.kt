@@ -2,19 +2,19 @@ package ba.codingstoic.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Base64
 import ba.codingstoic.data.GPodderPodcastSource
 import ba.codingstoic.podcast.PodcastRepository
 import ba.codingstoic.user.CookieManager
 import ba.codingstoic.user.UserSession
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.audio.AudioAttributes
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -22,6 +22,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.threeten.bp.ZoneId
+import org.threeten.bp.ZonedDateTime
+import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.temporal.ChronoUnit
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -44,15 +48,22 @@ val dataModule = module {
         object : Interceptor {
             override fun intercept(chain: Interceptor.Chain): Response {
                 val newRequest = chain.request().newBuilder()
-                if (chain.request().headers["BasicAuth"] != null) {
-                    newRequest.header(
-                        "Authorization",
-                        "Basic ${Base64.encodeToString("Test:Test".toByteArray(), Base64.NO_WRAP)}"
-                    )
-                } else {
-                    newRequest.header("sessionid", cookieManager.getCookie())
+                val expiresAt = cookieManager.getExpiresAt()
+                expiresAt?.let {
+                    val date = ZonedDateTime.parse(it, DateTimeFormatter.RFC_1123_DATE_TIME)
+                    val cutoffTime = date.minus(5, ChronoUnit.MINUTES)
+                    if (cutoffTime <= ZonedDateTime.now(ZoneId.systemDefault())) {
+                        val userSession = get<UserSession>()
+                        runBlocking {
+                            userSession.loginUser(
+                                cookieManager.getUserNameAndPassowrd().first,
+                                cookieManager.getUserNameAndPassowrd().second
+                            )
+                        }
+                    }
                 }
 
+                newRequest.header("sessionid", cookieManager.getCookie())
                 return chain.proceed(chain.request())
             }
 
@@ -60,11 +71,12 @@ val dataModule = module {
     }
 
     single<ExoPlayer> {
-        ExoPlayerFactory.newSimpleInstance(androidContext()).apply {
+        SimpleExoPlayer.Builder(androidContext()).build().apply {
             setAudioAttributes(
                 AudioAttributes.Builder().setContentType(C.CONTENT_TYPE_MUSIC)
                     .setUsage(C.USAGE_MEDIA).build(), true
             )
+            setHandleAudioBecomingNoisy(true)
         }
     }
 

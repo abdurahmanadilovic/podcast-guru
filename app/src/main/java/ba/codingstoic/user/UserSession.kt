@@ -14,9 +14,10 @@ class UserSession(
 ) {
 
     suspend fun loginUser(username: String, password: String) {
-        val credentials = "$username:$password"
-        val basic = "Basic " + Base64.encodeToString(credentials.toByteArray(), Base64.NO_WRAP)
-        val response = gPodderPodcastSource.login(authHeader = basic, username = username)
+        val response = gPodderPodcastSource.login(
+            authHeader = getBasicAuthHeader(username, password),
+            username = username
+        )
         val cookieValues = response.headers()["Set-Cookie"]?.split(";")
         cookieValues?.let {
             val sessionId = it.firstOrNull()
@@ -24,14 +25,20 @@ class UserSession(
 
             sessionId?.let { sessionId ->
                 expires?.let { expiresAt ->
-                    cookieManager.storeExpiresAt(expiresAt)
-                    cookieManager.storeCookie(sessionId)
+                    cookieManager.storeExpiresAt(expiresAt.split("=")[1])
+                    cookieManager.storeCookie(sessionId.split("=")[1])
+                    cookieManager.storeUserNameAndPassword(Pair(username, password))
                     return
                 }
             }
         }
 
         throw IllegalStateException("Could not read sessionId!")
+    }
+
+    private fun getBasicAuthHeader(username: String, password: String): String {
+        val credentials = "$username:$password"
+        return "Basic " + Base64.encodeToString(credentials.toByteArray(), Base64.NO_WRAP)
     }
 
     fun isLoggedIn(): Boolean {
