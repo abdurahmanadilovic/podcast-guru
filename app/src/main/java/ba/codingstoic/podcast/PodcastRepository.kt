@@ -1,21 +1,31 @@
 package ba.codingstoic.podcast
 
+import ba.codingstoic.data.Entry
 import ba.codingstoic.data.GPodderEpisodeModel
 import ba.codingstoic.data.GPodderPodcastModel
 import ba.codingstoic.data.GPodderPodcastSource
-import ba.codingstoic.player.Episode
 
 data class Podcast(
     val urlId: String,
     val name: String,
-    val imageUrl: String,
-    val episodes: List<Episode>
-)
+    val imageUrl: String?
+) {
+    companion object {
+        fun fromItunesModel(entry: Entry): Podcast {
+            val id = entry.id.attributes.id
+            val name = entry.title.label
+            val imageUrl = entry.images?.getOrNull(0)?.label
+            return Podcast(id, name, imageUrl)
+        }
+    }
+}
 
 class PodcastRepository(private val podcastSource: GPodderPodcastSource) {
-    suspend fun getTopPodcasts(count: Int = 10): List<Podcast> {
-        return podcastSource.getTopPodcasts(count).map {
-            Podcast(it.url, it.title, it.logo_url, listOf())
+    suspend fun getTopPodcasts(count: Int = 10): List<Podcast>? {
+        val url = "https://itunes.apple.com/us/rss/toppodcasts/limit=$count/explicit=true/json"
+        val data = podcastSource.getTopPodcastsItunes(url)
+        return data.feed.entry.map {
+            Podcast.fromItunesModel(it)
         }
     }
 
@@ -24,6 +34,7 @@ class PodcastRepository(private val podcastSource: GPodderPodcastSource) {
     }
 
     fun getEpisodes(podcastId: String): List<GPodderEpisodeModel> {
+        val feedUrl = "https://itunes.apple.com/lookup?id=$podcastId"
         return listOf()
     }
 }

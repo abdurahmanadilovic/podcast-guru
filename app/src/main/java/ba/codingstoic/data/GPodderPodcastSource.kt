@@ -19,4 +19,7 @@ interface GPodderPodcastSource {
 
     @GET("api/2/data/podcast.json")
     suspend fun getPodcast(@Query("url") url: String): GPodderPodcastModel
+
+    @GET
+    suspend fun getTopPodcastsItunes(@Url url: String): ItunesModel
 }
