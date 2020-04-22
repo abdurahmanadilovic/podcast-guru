@@ -2,7 +2,7 @@ package ba.codingstoic.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import ba.codingstoic.data.GPodderPodcastSource
+import ba.codingstoic.data.NetworkSource
 import ba.codingstoic.podcast.PodcastRepository
 import ba.codingstoic.user.CookieManager
 import ba.codingstoic.user.UserSession
@@ -107,9 +107,9 @@ val dataModule = module {
             .build()
     }
 
-    single<GPodderPodcastSource> {
+    single<NetworkSource> {
         val retrofit: Retrofit = get()
-        retrofit.create(GPodderPodcastSource::class.java)
+        retrofit.create(NetworkSource::class.java)
     }
 
     single {

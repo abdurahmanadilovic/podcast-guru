@@ -7,7 +7,7 @@ import retrofit2.http.*
  * Created by Abdurahman Adilovic on 3/21/20.
  */
 
-interface GPodderPodcastSource {
+interface NetworkSource {
     @POST("api/2/auth/{username}/login.json")
     suspend fun login(
         @Header("Authorization") authHeader: String,
@@ -21,5 +21,8 @@ interface GPodderPodcastSource {
     suspend fun getPodcast(@Query("url") url: String): GPodderPodcastModel
 
     @GET
-    suspend fun getTopPodcastsItunes(@Url url: String): ItunesModel
+    suspend fun getTopPodcastsItunes(@Url url: String): ItunesTopPodcastsModel
+
+    @GET
+    suspend fun getSinglePodcast(@Url url: String): ItunesSinglePodcastWrapper
 }

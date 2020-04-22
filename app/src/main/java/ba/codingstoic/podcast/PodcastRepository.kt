@@ -2,8 +2,8 @@ package ba.codingstoic.podcast
 
 import ba.codingstoic.data.Entry
 import ba.codingstoic.data.GPodderEpisodeModel
-import ba.codingstoic.data.GPodderPodcastModel
-import ba.codingstoic.data.GPodderPodcastSource
+import ba.codingstoic.data.ItunesSinglePodcastWrapper
+import ba.codingstoic.data.NetworkSource
 
 data class Podcast(
     val urlId: String,
@@ -20,7 +20,7 @@ data class Podcast(
     }
 }
 
-class PodcastRepository(private val podcastSource: GPodderPodcastSource) {
+class PodcastRepository(private val podcastSource: NetworkSource) {
     suspend fun getTopPodcasts(count: Int = 10): List<Podcast>? {
         val url = "https://itunes.apple.com/us/rss/toppodcasts/limit=$count/explicit=true/json"
         val data = podcastSource.getTopPodcastsItunes(url)
@@ -29,8 +29,9 @@ class PodcastRepository(private val podcastSource: GPodderPodcastSource) {
         }
     }
 
-    suspend fun getPodcast(id: String): GPodderPodcastModel {
-        return podcastSource.getPodcast(id)
+    suspend fun getPodcast(id: String): ItunesSinglePodcastWrapper {
+        val url = "https://itunes.apple.com/lookup?id=$id"
+        return podcastSource.getSinglePodcast(url)
     }
 
     fun getEpisodes(podcastId: String): List<GPodderEpisodeModel> {

@@ -1,7 +1,7 @@
 package ba.codingstoic.user
 
 import android.util.Base64
-import ba.codingstoic.data.GPodderPodcastSource
+import ba.codingstoic.data.NetworkSource
 
 
 /**
@@ -9,12 +9,12 @@ import ba.codingstoic.data.GPodderPodcastSource
  */
 
 class UserSession(
-    private val gPodderPodcastSource: GPodderPodcastSource,
+    private val networkSource: NetworkSource,
     private val cookieManager: CookieManager
 ) {
 
     suspend fun loginUser(username: String, password: String) {
-        val response = gPodderPodcastSource.login(
+        val response = networkSource.login(
             authHeader = getBasicAuthHeader(username, password),
             username = username
         )

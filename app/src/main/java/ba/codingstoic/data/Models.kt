@@ -29,6 +29,9 @@ data class GPodderEpisodeModel(
     val mygpo_link: String
 )
 
+
+// itunes top podcasts models
+
 data class Attributes(@Json(name = "im:id") val id: String)
 data class Id(val attributes: Attributes)
 data class Image(val label: String)
@@ -40,8 +43,43 @@ data class Entry(
     val summary: LabelProperty
 )
 
-data class Entries(val entry: List<Entry>)
 data class Feed(val entry: List<Entry>)
-data class ItunesModel(val feed: Feed)
-data class ItunesEpisode(val url: String)
+data class ItunesTopPodcastsModel(val feed: Feed)
+
+
+// itunes single podcast models
+
+data class ItunesSinglePodcast(
+    val feedUrl: String
+)
+
+data class ItunesSinglePodcastWrapper(
+    val results: List<ItunesSinglePodcast>
+)
+
+
+// rss models
+
+data class Enclosure(val url: String)
+
+data class RssItem(
+    val url: String,
+    @Json(name = "itunes:title")
+    val title: String,
+    @Json(name = "itunes:summary")
+    val summary: String,
+    @Json(name = "pubDate")
+    val publishedDate: String,
+    val enclosure: Enclosure
+)
+
+data class Channel(
+    val item: List<RssItem>
+)
+
+data class Rss(
+    val channel: Channel
+)
+
+data class RssWrapper(val rss: Rss)
 
