@@ -50,6 +50,9 @@ data class ItunesTopPodcastsModel(val feed: Feed)
 // itunes single podcast models
 
 data class ItunesSinglePodcast(
+    val collectionId: Long,
+    val collectionName: String,
+    val artworkUrl100: String,
     val feedUrl: String
 )
 

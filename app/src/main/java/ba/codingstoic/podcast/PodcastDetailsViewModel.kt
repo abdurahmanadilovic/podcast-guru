@@ -40,7 +40,7 @@ class PodcastDetailsViewModel(
                     }
                 }
 
-                Podcast(podcastDetails.url, podcastDetails.title, podcastDetails.logo_url)
+                _podcast.value = podcastDetails
             } catch (ex: Exception) {
                 _errors.value = ex.localizedMessage
             }

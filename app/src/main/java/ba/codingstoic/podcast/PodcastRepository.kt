@@ -1,21 +1,31 @@
 package ba.codingstoic.podcast
 
 import ba.codingstoic.data.Entry
-import ba.codingstoic.data.GPodderEpisodeModel
-import ba.codingstoic.data.ItunesSinglePodcastWrapper
+import ba.codingstoic.data.ItunesSinglePodcast
 import ba.codingstoic.data.NetworkSource
+import ba.codingstoic.player.Episode
 
 data class Podcast(
-    val urlId: String,
+    val id: String,
     val name: String,
-    val imageUrl: String?
+    val imageUrl: String?,
+    val feedUrl: String? = null
 ) {
     companion object {
         fun fromItunesModel(entry: Entry): Podcast {
             val id = entry.id.attributes.id
             val name = entry.title.label
             val imageUrl = entry.images?.getOrNull(0)?.label
-            return Podcast(id, name, imageUrl)
+            return Podcast(id = id, name = name, imageUrl = imageUrl)
+        }
+
+        fun fromSingleItunesModel(itunesModel: ItunesSinglePodcast): Podcast {
+            return Podcast(
+                name = itunesModel.collectionName,
+                feedUrl = itunesModel.feedUrl,
+                imageUrl = itunesModel.artworkUrl100,
+                id = itunesModel.collectionId.toString()
+            )
         }
     }
 }
@@ -29,13 +39,16 @@ class PodcastRepository(private val podcastSource: NetworkSource) {
         }
     }
 
-    suspend fun getPodcast(id: String): ItunesSinglePodcastWrapper {
+    suspend fun getPodcast(id: String): Podcast {
         val url = "https://itunes.apple.com/lookup?id=$id"
-        return podcastSource.getSinglePodcast(url)
+        val itunesModel = podcastSource.getSinglePodcast(url).results.get(0)
+        return Podcast.fromSingleItunesModel(itunesModel)
     }
 
-    fun getEpisodes(podcastId: String): List<GPodderEpisodeModel> {
-        val feedUrl = "https://itunes.apple.com/lookup?id=$podcastId"
-        return listOf()
+    suspend fun getEpisodes(feedUrl: String): List<Episode> {
+        val episodes = podcastSource.getEpisodes(feedUrl).channel.item.map {
+            Episode(it.title, it.url)
+        }
+        return episodes
     }
 }

@@ -46,7 +46,7 @@ class PodcastListFragment : Fragment() {
             if (item is PodcastItem) {
                 findNavController().navigate(
                     R.id.action_mainFragment_to_podcastDetailsFragment,
-                    bundleOf(PodcastDetailsFragment.podcastIdArgument to item.podcast.urlId)
+                    bundleOf(PodcastDetailsFragment.podcastIdArgument to item.podcast.id)
                 )
             }
         }

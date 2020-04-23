@@ -25,4 +25,7 @@ interface NetworkSource {
 
     @GET
     suspend fun getSinglePodcast(@Url url: String): ItunesSinglePodcastWrapper
+
+    @GET
+    suspend fun getEpisodes(@Url url: String): Rss
 }
