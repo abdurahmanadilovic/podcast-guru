@@ -23,8 +23,8 @@ class PodcastDetailsViewModel(
     val isLoading: LiveData<Boolean> = _isLoading
     private val _errors = MutableLiveData<String>()
     val errors: LiveData<String> = _errors
-    private val _podcast = MutableLiveData<Podcast>()
-    val podcast: LiveData<Podcast> = _podcast
+    private val _podcast = MutableLiveData<Pair<Podcast, List<Episode>>>()
+    val podcastAndEpisodes: LiveData<Pair<Podcast, List<Episode>>> = _podcast
 
     fun getPodcastDetails(urlId: String) {
         viewModelScope.launch(coroutineContext) {
@@ -35,12 +35,10 @@ class PodcastDetailsViewModel(
                     podcastRepository.getPodcast(urlId)
                 }
                 val episodes = withContext(ioDispatcher) {
-                    podcastRepository.getEpisodes(urlId).map {
-                        Episode(it.title, it.url)
-                    }
+                    podcastRepository.getEpisodes(urlId)
                 }
 
-                _podcast.value = podcastDetails
+                _podcast.value = Pair(podcastDetails, episodes)
             } catch (ex: Exception) {
                 _errors.value = ex.localizedMessage
             }

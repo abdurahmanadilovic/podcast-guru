@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import ba.codingstoic.R
+import ba.codingstoic.utils.toastIt
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.podcast_details_view.*
@@ -43,7 +44,14 @@ class PodcastDetailsFragment : Fragment() {
             podcast_details_swipe_refresh.isRefreshing = it
         })
 
-        podcastDetailsViewModel.podcast.observe(viewLifecycleOwner, Observer {
+        podcastDetailsViewModel.podcastAndEpisodes.observe(viewLifecycleOwner, Observer { pair ->
+            adapter.clear()
+            adapter.add(PodcastDetailsItem(pair.first))
+            adapter.addAll(pair.second.map { EpisodeRow(it) })
+        })
+
+        podcastDetailsViewModel.errors.observe(viewLifecycleOwner, Observer {
+            context?.toastIt(it)
         })
 
         podcast_details_swipe_refresh.setOnRefreshListener {

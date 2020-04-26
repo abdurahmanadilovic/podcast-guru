@@ -2,8 +2,10 @@ package ba.codingstoic.podcast
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import ba.codingstoic.R
+import ba.codingstoic.player.Episode
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
+import kotlinx.android.synthetic.main.podcast_details_episode_row.*
 import kotlinx.android.synthetic.main.podcast_details_podcast_row.*
 import kotlinx.android.synthetic.main.podcast_row.*
 import kotlinx.android.synthetic.main.podcast_section_header.*
@@ -45,3 +47,13 @@ class PodcastDetailsItem(val podcast: Podcast) : Item() {
     override fun getLayout(): Int = R.layout.podcast_details_podcast_row
 
 }
+
+class EpisodeRow(private val episode: Episode) : Item() {
+    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+        viewHolder.episode_row_title.text = episode.title
+    }
+
+    override fun getLayout(): Int = R.layout.podcast_details_episode_row
+
+}
+
