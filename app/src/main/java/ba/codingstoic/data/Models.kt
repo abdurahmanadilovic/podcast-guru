@@ -32,8 +32,8 @@ data class GPodderEpisodeModel(
 
 // itunes top podcasts models
 
-data class Attributes(@Json(name = "im:id") val id: String)
-data class Id(val attributes: Attributes)
+data class Attributes(@Json(name = "im:id") val id: String?)
+data class Id(val attributes: Attributes, val label: String)
 data class Image(val label: String)
 data class LabelProperty(val label: String)
 data class Entry(

@@ -35,10 +35,12 @@ class PodcastDetailsViewModel(
                     podcastRepository.getPodcast(urlId)
                 }
                 val episodes = withContext(ioDispatcher) {
-                    podcastRepository.getEpisodes(urlId)
+                    podcastDetails.feedUrl?.let {
+                        podcastRepository.getEpisodes(it)
+                    }
                 }
 
-                _podcast.value = Pair(podcastDetails, episodes)
+                _podcast.value = Pair(podcastDetails, episodes ?: listOf())
             } catch (ex: Exception) {
                 _errors.value = ex.localizedMessage
             }

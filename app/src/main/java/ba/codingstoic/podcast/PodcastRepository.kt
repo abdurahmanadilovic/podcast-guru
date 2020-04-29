@@ -13,7 +13,8 @@ data class Podcast(
 ) {
     companion object {
         fun fromItunesModel(entry: Entry): Podcast {
-            val id = entry.id.attributes.id
+            val id = if (entry.id.attributes.id.isNullOrEmpty()) entry.id.label.split("/").last()
+                .replace("id", "").split("?").first() else entry.id.attributes.id
             val name = entry.title.label
             val imageUrl = entry.images?.getOrNull(0)?.label
             return Podcast(id = id, name = name, imageUrl = imageUrl)
