@@ -2,6 +2,7 @@ package ba.codingstoic.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import ba.codingstoic.data.FeedSource
 import ba.codingstoic.data.NetworkSource
 import ba.codingstoic.podcast.PodcastRepository
 import ba.codingstoic.user.CookieManager
@@ -14,6 +15,8 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import com.tickaroo.tikxml.TikXml
+import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -113,7 +116,22 @@ val dataModule = module {
     }
 
     single {
-        PodcastRepository(get())
+        val client = OkHttpClient.Builder().addInterceptor(get<Interceptor>())
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }).build()
+
+        val retrofit = Retrofit.Builder()
+            .client(client)
+            .baseUrl("http://itunes.com")
+            .addConverterFactory(
+                TikXmlConverterFactory.create(
+                    TikXml.Builder().exceptionOnUnreadXml(false).build()
+                )
+            )
+            .build()
+
+        PodcastRepository(get(), retrofit.create(FeedSource::class.java))
     }
 
 }

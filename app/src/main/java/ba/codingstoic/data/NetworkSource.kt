@@ -25,7 +25,9 @@ interface NetworkSource {
 
     @GET
     suspend fun getSinglePodcast(@Url url: String): ItunesSinglePodcastWrapper
+}
 
+interface FeedSource {
     @GET
     suspend fun getEpisodes(@Url url: String): Rss
 }

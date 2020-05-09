@@ -1,6 +1,10 @@
 package ba.codingstoic.data
 
 import com.squareup.moshi.Json
+import com.tickaroo.tikxml.annotation.Attribute
+import com.tickaroo.tikxml.annotation.Element
+import com.tickaroo.tikxml.annotation.PropertyElement
+import com.tickaroo.tikxml.annotation.Xml
 
 /**
  * Created by Abdurahman Adilovic on 3/21/20.
@@ -63,26 +67,32 @@ data class ItunesSinglePodcastWrapper(
 
 // rss models
 
-data class Enclosure(val url: String)
+@Xml
+data class Enclosure(@Attribute var url: String)
 
-data class RssItem(
-    val url: String,
-    @Json(name = "itunes:title")
-    val title: String,
-    @Json(name = "itunes:summary")
-    val summary: String,
-    @Json(name = "pubDate")
-    val publishedDate: String,
-    val enclosure: Enclosure
+@Xml
+data class Item(
+    @PropertyElement(name = "itunes:title")
+    var title: String,
+    @PropertyElement(name = "itunes:summary")
+    var summary: String,
+    @PropertyElement(name = "pubDate")
+    var publishedDate: String,
+    @Element
+    var enclosure: Enclosure
 )
 
+@Xml
 data class Channel(
-    val item: List<RssItem>
+    @Element
+    var items: List<Item>
 )
 
-data class Rss(
-    val channel: Channel
+@Xml
+data class Rss constructor(
+    @Element var channel: Channel? = null
 )
 
-data class RssWrapper(val rss: Rss)
+@Xml()
+data class RssWrapper @JvmOverloads constructor(@field:Element var rss: Rss? = null)
 
