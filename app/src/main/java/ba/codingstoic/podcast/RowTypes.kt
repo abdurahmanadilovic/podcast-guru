@@ -48,7 +48,7 @@ class PodcastDetailsItem(val podcast: Podcast) : Item() {
 
 }
 
-class EpisodeRow(private val episode: Episode) : Item() {
+class EpisodeRow(val episode: Episode) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.episode_row_title.text = episode.title
     }

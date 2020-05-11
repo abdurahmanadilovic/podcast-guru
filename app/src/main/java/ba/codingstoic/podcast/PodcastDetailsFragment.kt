@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import ba.codingstoic.R
+import ba.codingstoic.player.PlayerViewModel
 import ba.codingstoic.utils.toastIt
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.podcast_details_view.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -20,6 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PodcastDetailsFragment : Fragment() {
     private val podcastDetailsViewModel by viewModel<PodcastDetailsViewModel>()
+    private val playerViewModel by sharedViewModel<PlayerViewModel>()
     lateinit var podcastId: String
 
     override fun onCreateView(
@@ -56,6 +59,12 @@ class PodcastDetailsFragment : Fragment() {
 
         podcast_details_swipe_refresh.setOnRefreshListener {
             podcastDetailsViewModel.getPodcastDetails(podcastId)
+        }
+
+        adapter.setOnItemClickListener { item, _ ->
+            if (item is EpisodeRow) {
+                playerViewModel.play(listOf(item.episode))
+            }
         }
 
         podcast_details_rv.adapter = adapter
