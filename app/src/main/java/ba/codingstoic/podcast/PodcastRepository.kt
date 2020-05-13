@@ -52,7 +52,7 @@ class PodcastRepository(
 
     suspend fun getEpisodes(feedUrl: String): List<Episode> {
         val episodes = feedSource.getEpisodes(feedUrl).channel?.items?.map {
-            Episode(it.title, it.enclosure.url)
+            Episode(title = it.title, mp3Url = it.enclosure.url, imageUrl = it.imageUrl.url)
         }
         return episodes ?: listOf()
     }

@@ -2,26 +2,22 @@ package ba.codingstoic
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
-import ba.codingstoic.user.UserSession
+import androidx.lifecycle.Observer
+import ba.codingstoic.player.PlayerViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
-    private val userSession: UserSession by inject()
+    private val playerViewModel: PlayerViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navHostFragment = nav_host_fragment as NavHostFragment
-        val inflater = navHostFragment.navController.navInflater
-        val graph = inflater.inflate(R.navigation.navigation_graph)
-        graph.startDestination = if (userSession.isLoggedIn()) {
-            R.id.mainFragment
-        } else {
-            R.id.loginFragment
-        }
-        navHostFragment.navController.setGraph(graph, intent.extras)
+        playerViewModel.currentlyPlaying.observe(this, Observer {
+            BottomSheetBehavior.from(main_activity_bottom_sheet).state =
+                BottomSheetBehavior.STATE_EXPANDED
+        })
     }
 }

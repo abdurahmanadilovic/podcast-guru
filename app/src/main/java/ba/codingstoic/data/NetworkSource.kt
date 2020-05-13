@@ -14,12 +14,6 @@ interface NetworkSource {
         @Path("username") username: String
     ): Response<Void>
 
-    @GET("toplist/{count}.json")
-    suspend fun getTopPodcasts(@Path("count") count: Int): List<GPodderPodcastModel>
-
-    @GET("api/2/data/podcast.json")
-    suspend fun getPodcast(@Query("url") url: String): GPodderPodcastModel
-
     @GET
     suspend fun getTopPodcastsItunes(@Url url: String): ItunesTopPodcastsModel
 

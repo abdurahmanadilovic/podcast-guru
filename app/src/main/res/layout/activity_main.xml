@@ -12,8 +12,7 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:context=".MainActivity">
 
-
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
@@ -23,7 +22,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/navigation_graph" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -31,7 +31,7 @@
         android:id="@+id/main_activity_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:behavior_hideable="false"
         app:behavior_peekHeight="50dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/mini_player_margins"
-            android:text="Podcast title - Episode Title"
+            tools:text="Podcast title - Episode Title"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"

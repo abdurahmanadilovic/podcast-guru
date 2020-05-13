@@ -10,30 +10,6 @@ import com.tickaroo.tikxml.annotation.Xml
  * Created by Abdurahman Adilovic on 3/21/20.
  */
 
-data class GPodderPodcastModel(
-    val website: String,
-    val description: String,
-    val title: String,
-    val author: String,
-    val url: String,
-    val subscribers: Int,
-    val position_last_week: Int,
-    val mygpo_link: String,
-    val logo_url: String
-)
-
-data class GPodderEpisodeModel(
-    val title: String,
-    val url: String,
-    val podcast_title: String,
-    val podcast_url: String,
-    val description: List<String>,
-    val website: String,
-    val released: String,
-    val mygpo_link: String
-)
-
-
 // itunes top podcasts models
 
 data class Attributes(@Json(name = "im:id") val id: String?)
@@ -71,6 +47,9 @@ data class ItunesSinglePodcastWrapper(
 data class Enclosure(@Attribute var url: String)
 
 @Xml
+data class ImageUrl(@Attribute(name = "href") var url: String)
+
+@Xml
 data class Item(
     @PropertyElement(name = "itunes:title")
     var title: String,
@@ -78,6 +57,8 @@ data class Item(
     var summary: String,
     @PropertyElement(name = "pubDate")
     var publishedDate: String,
+    @Element(name = "itunes:image")
+    var imageUrl: ImageUrl,
     @Element
     var enclosure: Enclosure
 )
@@ -92,7 +73,4 @@ data class Channel(
 data class Rss constructor(
     @Element var channel: Channel? = null
 )
-
-@Xml()
-data class RssWrapper @JvmOverloads constructor(@field:Element var rss: Rss? = null)
 

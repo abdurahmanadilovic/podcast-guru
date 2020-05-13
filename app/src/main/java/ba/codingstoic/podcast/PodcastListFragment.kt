@@ -38,7 +38,7 @@ class PodcastListFragment : Fragment() {
 
         val newAdapter = GroupAdapter<GroupieViewHolder>()
         val topSection = Section()
-        topSection.setHeader(PodcastSectionHeader("Top"))
+        topSection.setHeader(PodcastSectionHeader("Top Podcasts"))
 
         newAdapter.add(topSection)
 

@@ -3,6 +3,7 @@ package ba.codingstoic.podcast
 import androidx.recyclerview.widget.ItemTouchHelper
 import ba.codingstoic.R
 import ba.codingstoic.player.Episode
+import com.squareup.picasso.Picasso
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.podcast_details_episode_row.*
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.podcast_section_header.*
 class PodcastItem(val podcast: Podcast) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.podcast_title.text = podcast.name
+        Picasso.get().load(podcast.imageUrl).into(viewHolder.podcast_image)
     }
 
     override fun getLayout(): Int = R.layout.podcast_row
@@ -42,6 +44,7 @@ class PodcastSectionHeader(private val name: String) : Item() {
 class PodcastDetailsItem(val podcast: Podcast) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.podcast_details_podcast_row_title.text = podcast.name
+        Picasso.get().load(podcast.imageUrl).into(viewHolder.podcast_details_podcast_row_image)
     }
 
     override fun getLayout(): Int = R.layout.podcast_details_podcast_row
@@ -51,6 +54,7 @@ class PodcastDetailsItem(val podcast: Podcast) : Item() {
 class EpisodeRow(val episode: Episode) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.episode_row_title.text = episode.title
+        Picasso.get().load(episode.imageUrl).into(viewHolder.episode_row_image)
     }
 
     override fun getLayout(): Int = R.layout.podcast_details_episode_row
