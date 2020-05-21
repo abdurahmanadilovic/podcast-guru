@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_bottom_sheet"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".MainActivity">
 
         <androidx.fragment.app.FragmentContainerView
@@ -29,12 +31,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_activity_bottom_sheet"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:behavior_hideable="false"
-        app:behavior_peekHeight="50dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:visibility="visible">
 
         <View
             android:id="@+id/mini_player_background"
@@ -56,34 +58,22 @@
             app:layout_constraintLeft_toLeftOf="@id/mini_player_background"
             app:layout_constraintTop_toTopOf="@id/mini_player_background" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/play_icon"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="5dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:padding="0dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_play_circle_outline_black_24dp"
-            android:tint="@color/white"
+        <com.google.android.exoplayer2.ui.PlayerControlView
+            android:id="@+id/player_view"
             app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:controller_layout_id="@layout/exo_player_view_mini"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/colorPrimaryDark"
-            app:layout_constraintBottom_toBottomOf="@id/player_podcast_image"
-            app:layout_constraintTop_toTopOf="@id/player_podcast_image" />
 
         <ImageView
             android:id="@+id/player_podcast_image"
             android:layout_width="200dp"
+            android:visibility="gone"
             android:layout_height="200dp"
             android:src="@drawable/ic_mic_black_24dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/play_icon" />
+            app:layout_constraintTop_toBottomOf="@id/player_view" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
