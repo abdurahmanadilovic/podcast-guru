@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         playerViewModel.currentlyPlaying.observe(this, Observer {
             main_activity_bottom_sheet.visibility = View.VISIBLE
+            current_episode_title.text = it.title
         })
     }
 }
