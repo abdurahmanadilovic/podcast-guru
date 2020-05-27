@@ -52,13 +52,13 @@ data class ImageUrl(@Attribute(name = "href") var url: String)
 @Xml
 data class Item(
     @PropertyElement(name = "itunes:title")
-    var title: String,
+    var title: String?,
     @PropertyElement(name = "itunes:summary")
-    var summary: String,
+    var summary: String?,
     @PropertyElement(name = "pubDate")
-    var publishedDate: String,
+    var publishedDate: String?,
     @Element(name = "itunes:image")
-    var imageUrl: ImageUrl,
+    var imageUrl: ImageUrl?,
     @Element
     var enclosure: Enclosure
 )
