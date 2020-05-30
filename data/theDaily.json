@@ -1,0 +1,49 @@
+{
+  "resultCount": 1,
+  "results": [
+    {
+      "wrapperType": "track",
+      "kind": "podcast",
+      "artistId": 121664449,
+      "collectionId": 1200361736,
+      "trackId": 1200361736,
+      "artistName": "The New York Times",
+      "collectionName": "The Daily",
+      "trackName": "The Daily",
+      "collectionCensoredName": "The Daily",
+      "trackCensoredName": "The Daily",
+      "artistViewUrl": "https://podcasts.apple.com/us/artist/the-new-york-times/121664449?uo=4",
+      "collectionViewUrl": "https://podcasts.apple.com/us/podcast/the-daily/id1200361736?uo=4",
+      "feedUrl": "http://rss.art19.com/the-daily",
+      "trackViewUrl": "https://podcasts.apple.com/us/podcast/the-daily/id1200361736?uo=4",
+      "artworkUrl30": "https://is3-ssl.mzstatic.com/image/thumb/Podcasts114/v4/93/cf/99/93cf9960-fff3-205e-6655-72c03ddeccb2/mza_10545582232493904175.jpeg/30x30bb.jpg",
+      "artworkUrl60": "https://is3-ssl.mzstatic.com/image/thumb/Podcasts114/v4/93/cf/99/93cf9960-fff3-205e-6655-72c03ddeccb2/mza_10545582232493904175.jpeg/60x60bb.jpg",
+      "artworkUrl100": "https://is3-ssl.mzstatic.com/image/thumb/Podcasts114/v4/93/cf/99/93cf9960-fff3-205e-6655-72c03ddeccb2/mza_10545582232493904175.jpeg/100x100bb.jpg",
+      "collectionPrice": 0.00,
+      "trackPrice": 0.00,
+      "trackRentalPrice": 0,
+      "collectionHdPrice": 0,
+      "trackHdPrice": 0,
+      "trackHdRentalPrice": 0,
+      "releaseDate": "2020-05-30T12:00:00Z",
+      "collectionExplicitness": "cleaned",
+      "trackExplicitness": "cleaned",
+      "trackCount": 300,
+      "country": "USA",
+      "currency": "USD",
+      "primaryGenreName": "Daily News",
+      "contentAdvisoryRating": "Clean",
+      "artworkUrl600": "https://is3-ssl.mzstatic.com/image/thumb/Podcasts114/v4/93/cf/99/93cf9960-fff3-205e-6655-72c03ddeccb2/mza_10545582232493904175.jpeg/600x600bb.jpg",
+      "genreIds": [
+        "1526",
+        "26",
+        "1489"
+      ],
+      "genres": [
+        "Daily News",
+        "Podcasts",
+        "News"
+      ]
+    }
+  ]
+}

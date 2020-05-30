@@ -38,9 +38,10 @@ class PodcastDetailsViewModel(
                     podcastDetails.feedUrl?.let {
                         podcastRepository.getEpisodes(it)
                     }
+                    listOf<Episode>()
                 }
 
-                _podcast.value = Pair(podcastDetails, episodes ?: listOf())
+                _podcast.value = Pair(podcastDetails, episodes)
             } catch (ex: Exception) {
                 _errors.value = ex.localizedMessage
             }

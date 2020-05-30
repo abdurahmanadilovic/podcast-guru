@@ -1,0 +1,49 @@
+{
+  "resultCount": 1,
+  "results": [
+    {
+      "wrapperType": "track",
+      "kind": "podcast",
+      "artistId": 306357904,
+      "collectionId": 1513430448,
+      "trackId": 1513430448,
+      "artistName": "L.A. Times",
+      "collectionName": "It Was Simple: The Betty Broderick Murders",
+      "trackName": "It Was Simple: The Betty Broderick Murders",
+      "collectionCensoredName": "It Was Simple: The Betty Broderick Murders",
+      "trackCensoredName": "It Was Simple: The Betty Broderick Murders",
+      "artistViewUrl": "https://podcasts.apple.com/us/artist/los-angeles-times/306357904?uo=4",
+      "collectionViewUrl": "https://podcasts.apple.com/us/podcast/it-was-simple-the-betty-broderick-murders/id1513430448?uo=4",
+      "feedUrl": "https://rss.art19.com/it-was-simple--the-betty-broderick-murders",
+      "trackViewUrl": "https://podcasts.apple.com/us/podcast/it-was-simple-the-betty-broderick-murders/id1513430448?uo=4",
+      "artworkUrl30": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts113/v4/cc/35/25/cc35256d-d70e-0f03-9179-158bf7d88c41/mza_668501137671000423.jpeg/30x30bb.jpg",
+      "artworkUrl60": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts113/v4/cc/35/25/cc35256d-d70e-0f03-9179-158bf7d88c41/mza_668501137671000423.jpeg/60x60bb.jpg",
+      "artworkUrl100": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts113/v4/cc/35/25/cc35256d-d70e-0f03-9179-158bf7d88c41/mza_668501137671000423.jpeg/100x100bb.jpg",
+      "collectionPrice": 0.00,
+      "trackPrice": 0.00,
+      "trackRentalPrice": 0,
+      "collectionHdPrice": 0,
+      "trackHdPrice": 0,
+      "trackHdRentalPrice": 0,
+      "releaseDate": "2020-05-26T07:30:00Z",
+      "collectionExplicitness": "cleaned",
+      "trackExplicitness": "cleaned",
+      "trackCount": 3,
+      "country": "USA",
+      "currency": "USD",
+      "primaryGenreName": "True Crime",
+      "contentAdvisoryRating": "Clean",
+      "artworkUrl600": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts113/v4/cc/35/25/cc35256d-d70e-0f03-9179-158bf7d88c41/mza_668501137671000423.jpeg/600x600bb.jpg",
+      "genreIds": [
+        "1488",
+        "26",
+        "1487"
+      ],
+      "genres": [
+        "True Crime",
+        "Podcasts",
+        "History"
+      ]
+    }
+  ]
+}

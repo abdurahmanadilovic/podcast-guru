@@ -1,0 +1,46 @@
+{
+  "resultCount": 1,
+  "results": [
+    {
+      "wrapperType": "track",
+      "kind": "podcast",
+      "artistId": 1485045052,
+      "collectionId": 1322200189,
+      "trackId": 1322200189,
+      "artistName": "audiochuck",
+      "collectionName": "Crime Junkie",
+      "trackName": "Crime Junkie",
+      "collectionCensoredName": "Crime Junkie",
+      "trackCensoredName": "Crime Junkie",
+      "artistViewUrl": "https://podcasts.apple.com/us/artist/audiochuck/1485045052?uo=4",
+      "collectionViewUrl": "https://podcasts.apple.com/us/podcast/crime-junkie/id1322200189?uo=4",
+      "feedUrl": "https://feeds.megaphone.fm/ADL9840290619",
+      "trackViewUrl": "https://podcasts.apple.com/us/podcast/crime-junkie/id1322200189?uo=4",
+      "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/c7/dc/3a/c7dc3a8b-0059-09f6-b707-5a927494dd0e/mza_15450212981800651587.jpg/30x30bb.jpg",
+      "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/c7/dc/3a/c7dc3a8b-0059-09f6-b707-5a927494dd0e/mza_15450212981800651587.jpg/60x60bb.jpg",
+      "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/c7/dc/3a/c7dc3a8b-0059-09f6-b707-5a927494dd0e/mza_15450212981800651587.jpg/100x100bb.jpg",
+      "collectionPrice": 0.00,
+      "trackPrice": 0.00,
+      "trackRentalPrice": 0,
+      "collectionHdPrice": 0,
+      "trackHdPrice": 0,
+      "trackHdRentalPrice": 0,
+      "releaseDate": "2020-05-25T07:00:00Z",
+      "collectionExplicitness": "notExplicit",
+      "trackExplicitness": "notExplicit",
+      "trackCount": 136,
+      "country": "USA",
+      "currency": "USD",
+      "primaryGenreName": "True Crime",
+      "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/c7/dc/3a/c7dc3a8b-0059-09f6-b707-5a927494dd0e/mza_15450212981800651587.jpg/600x600bb.jpg",
+      "genreIds": [
+        "1488",
+        "26"
+      ],
+      "genres": [
+        "True Crime",
+        "Podcasts"
+      ]
+    }
+  ]
+}

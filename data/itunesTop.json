@@ -1,0 +1,838 @@
+{
+  "feed": {
+    "author": {
+      "name": {
+        "label": "iTunes Store"
+      },
+      "uri": {
+        "label": "http://www.apple.com/itunes/"
+      }
+    },
+    "entry": [
+      {
+        "im:name": {
+          "label": "Call Her Daddy"
+        },
+        "im:image": [
+          {
+            "label": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/a9/39/cc/a939ccc5-6d60-0c11-0a4c-16d71cdef89b/mza_8787577209688278658.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/a9/39/cc/a939ccc5-6d60-0c11-0a4c-16d71cdef89b/mza_8787577209688278658.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/a9/39/cc/a939ccc5-6d60-0c11-0a4c-16d71cdef89b/mza_8787577209688278658.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Follow along Alex Cooper and the Daddy Gang as they exploit the details of their lives, making you feel a hell of a lot better about yours. Relationships, sex, social scenes, embarrassing moments, and more are all addressed here on CALL HER DADDY. See you f****** Wednesday."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© 2020 Barstool Sports"
+        },
+        "title": {
+          "label": "Call Her Daddy - Barstool Sports"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/call-her-daddy/id1418960261?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/call-her-daddy/id1418960261?uo=2",
+          "attributes": {
+            "im:id": "1418960261"
+          }
+        },
+        "im:artist": {
+          "label": "Barstool Sports",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/barstool-sports/973114159?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1303",
+            "term": "Comedy",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-comedy/id1303?uo=2",
+            "label": "Comedy"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2020-05-26T18:42:00-07:00",
+          "attributes": {
+            "label": "May 26, 2020"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "The Joe Rogan Experience"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/e5/8a/10/e58a108f-f5d0-f622-c94a-13f66edd570c/mza_3025981348644196724.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is3-ssl.mzstatic.com/image/thumb/Podcasts113/v4/e5/8a/10/e58a108f-f5d0-f622-c94a-13f66edd570c/mza_3025981348644196724.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/e5/8a/10/e58a108f-f5d0-f622-c94a-13f66edd570c/mza_3025981348644196724.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "The podcast of Comedian Joe Rogan.."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "Copyright © Talking Monkey Productions"
+        },
+        "title": {
+          "label": "The Joe Rogan Experience - Joe Rogan"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/the-joe-rogan-experience/id360084272?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/the-joe-rogan-experience/id360084272?uo=2",
+          "attributes": {
+            "im:id": "360084272"
+          }
+        },
+        "im:artist": {
+          "label": "Joe Rogan",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/joe-rogan/974891224?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1303",
+            "term": "Comedy",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-comedy/id1303?uo=2",
+            "label": "Comedy"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2020-05-29T12:00:00-07:00",
+          "attributes": {
+            "label": "May 29, 2020"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "Crime Junkie"
+        },
+        "im:image": [
+          {
+            "label": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/c7/dc/3a/c7dc3a8b-0059-09f6-b707-5a927494dd0e/mza_15450212981800651587.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/c7/dc/3a/c7dc3a8b-0059-09f6-b707-5a927494dd0e/mza_15450212981800651587.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/c7/dc/3a/c7dc3a8b-0059-09f6-b707-5a927494dd0e/mza_15450212981800651587.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "If you can never get enough true crime... Congratulations, you’ve found your people."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© audiochuck"
+        },
+        "title": {
+          "label": "Crime Junkie - audiochuck"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/crime-junkie/id1322200189?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/crime-junkie/id1322200189?uo=2",
+          "attributes": {
+            "im:id": "1322200189"
+          }
+        },
+        "im:artist": {
+          "label": "audiochuck",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/audiochuck/1485045052?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1488",
+            "term": "True Crime",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-true-crime/id1488?uo=2",
+            "label": "True Crime"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2020-05-25T00:00:00-07:00",
+          "attributes": {
+            "label": "May 25, 2020"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "It Was Simple: The Betty Broderick Murders"
+        },
+        "im:image": [
+          {
+            "label": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts113/v4/cc/35/25/cc35256d-d70e-0f03-9179-158bf7d88c41/mza_668501137671000423.jpeg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/cc/35/25/cc35256d-d70e-0f03-9179-158bf7d88c41/mza_668501137671000423.jpeg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/cc/35/25/cc35256d-d70e-0f03-9179-158bf7d88c41/mza_668501137671000423.jpeg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "These were murders that would turn any town on its head, but La Jolla, Calif? That rich jewel by the sea? Thirty years ago, a man and his new wife were murdered in their bed. That’s a long time for a double homicide to stay in the public eye and imagination, but these were no ordinary murders. The killer was the man’s first wife, Betty Broderick. Betty and Dan Broderick had looked like the perfect couple, right up until they weren’t. After four children and nearly 15 years of marriage, after the riches they both worked for were finally within reach, he walked out and began having an affair with his assistant. But divorce ended the Brodericks’ marriage only on paper. “Till death do you part” turned out to be the way it would ultimately end: bitter, savage and fatal. It took two criminal trials to send Betty Broderick to prison, and we’ll hear not only from her divorce attorney, but also from the criminal defense attorney who argued for her in two murder trials, plus the foreman of the jury that convicted her. So many things burned this case into memory: The principals were rich. The jealous killer was, for a change, the woman, not the man. It’s been the subject of TV movies and books. It’s resonated with two generations of Americans -- deserted wives, unhappy husbands. And it’s raised some questions about how divorce laws may contribute to what’s called the feminization of poverty. All of these issues remain critical and controversial in contemporary America today. Thirty years after five bullets, two coffins and one California prison inmate No. W42477, why can’t we look away from Betty Broderick?\n“It was Simple: The Betty Broderick Murders,” is a four-part podcast that premieres May 26."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© 2020 Los Angeles Times"
+        },
+        "title": {
+          "label": "It Was Simple: The Betty Broderick Murders - L.A. Times"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/it-was-simple-the-betty-broderick-murders/id1513430448?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/it-was-simple-the-betty-broderick-murders/id1513430448?uo=2",
+          "attributes": {
+            "im:id": "1513430448"
+          }
+        },
+        "im:artist": {
+          "label": "L.A. Times",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/los-angeles-times/306357904?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1488",
+            "term": "True Crime",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-true-crime/id1488?uo=2",
+            "label": "True Crime"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2020-05-26T00:30:00-07:00",
+          "attributes": {
+            "label": "May 26, 2020"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "The Daily"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts114/v4/93/cf/99/93cf9960-fff3-205e-6655-72c03ddeccb2/mza_10545582232493904175.jpeg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts114/v4/93/cf/99/93cf9960-fff3-205e-6655-72c03ddeccb2/mza_10545582232493904175.jpeg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts114/v4/93/cf/99/93cf9960-fff3-205e-6655-72c03ddeccb2/mza_10545582232493904175.jpeg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "This is what the news should sound like. The biggest stories of our time, told by the best journalists in the world. Hosted by Michael Barbaro. Twenty minutes a day, five days a week, ready by 6 a.m."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© 2018-2019 THE NEW YORK TIMES COMPANY; The New York Times encourages the use of RSS feeds for personal use in a news reader or as part of a non-commercial blog, subject to your agreement to our Terms of Service. Any commercial use of the RSS feed, and thus our content accessible via it, is prohibited without a written specific permission from The New York Times . We require proper format and attribution whenever New York Times content is posted on other's properties, and we reserve the right to require that you cease distributing our content."
+        },
+        "title": {
+          "label": "The Daily - The New York Times"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/the-daily/id1200361736?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/the-daily/id1200361736?uo=2",
+          "attributes": {
+            "im:id": "1200361736"
+          }
+        },
+        "im:artist": {
+          "label": "The New York Times",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/the-new-york-times/121664449?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1526",
+            "term": "Daily News",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-news-daily-news/id1526?uo=2",
+            "label": "Daily News"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2020-05-30T05:00:00-07:00",
+          "attributes": {
+            "label": "May 30, 2020"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "My Favorite Murder with Karen Kilgariff and Georgia Hardstark"
+        },
+        "im:image": [
+          {
+            "label": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts123/v4/1a/5d/48/1a5d4878-8769-4ce6-9727-f6601c548f8e/mza_12582235105778532397.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts123/v4/1a/5d/48/1a5d4878-8769-4ce6-9727-f6601c548f8e/mza_12582235105778532397.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts123/v4/1a/5d/48/1a5d4878-8769-4ce6-9727-f6601c548f8e/mza_12582235105778532397.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Lifelong fans of true crime stories Karen Kilgariff and Georgia Hardstark tell each other their favorite tales of murder and hear hometown crime stories from friends and fans."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© 2020 Exactly Right"
+        },
+        "title": {
+          "label": "My Favorite Murder with Karen Kilgariff and Georgia Hardstark - Exactly Right"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/my-favorite-murder-karen-kilgariff-georgia-hardstark/id1074507850?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/my-favorite-murder-karen-kilgariff-georgia-hardstark/id1074507850?uo=2",
+          "attributes": {
+            "im:id": "1074507850"
+          }
+        },
+        "im:artist": {
+          "label": "Exactly Right",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/exactly-right/1445321651?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1488",
+            "term": "True Crime",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-true-crime/id1488?uo=2",
+            "label": "True Crime"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2020-05-28T04:06:00-07:00",
+          "attributes": {
+            "label": "May 28, 2020"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "Unlocking Us with Brené Brown"
+        },
+        "im:image": [
+          {
+            "label": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts123/v4/1c/0f/9d/1c0f9de6-1434-792b-320c-5e8abeb130bb/mza_13236693715648709278.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts123/v4/1c/0f/9d/1c0f9de6-1434-792b-320c-5e8abeb130bb/mza_13236693715648709278.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts123/v4/1c/0f/9d/1c0f9de6-1434-792b-320c-5e8abeb130bb/mza_13236693715648709278.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "I’ve spent over 20 years studying the emotions and experiences that bring meaning and purpose to our lives, and if there’s one thing I’ve learned it’s this: We are hardwired for connection, and connecting requires courage, vulnerability, and conversation. I want this to be a podcast that’s real, unpolished, honest, and reflects both the magic and the messiness of what it means to be human. Episodes will include conversations with the people who are teaching me, challenging me, confusing me, or maybe even ticking me off a little. I'll also have direct conversations with you about what I’m learning from new research, and we'll do some episodes dedicated to answering your questions. We don’t have to do life alone. We were never meant to."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© Brené Brown Education and Research Group. All Rights Reserved."
+        },
+        "title": {
+          "label": "Unlocking Us with Brené Brown - Brené Brown and Cadence13"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/unlocking-us-with-bren%C3%A9-brown/id1494350511?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/unlocking-us-with-bren%C3%A9-brown/id1494350511?uo=2",
+          "attributes": {
+            "im:id": "1494350511"
+          }
+        },
+        "im:artist": {
+          "label": "Brené Brown and Cadence13"
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1544",
+            "term": "Relationships",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-society-culture-relationships/id1544?uo=2",
+            "label": "Relationships"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2020-05-28T22:01:00-07:00",
+          "attributes": {
+            "label": "May 28, 2020"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "Borrasca"
+        },
+        "im:image": [
+          {
+            "label": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/be/67/1e/be671e36-09b3-1005-e865-19e7860552f5/mza_5582217063074966225.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/be/67/1e/be671e36-09b3-1005-e865-19e7860552f5/mza_5582217063074966225.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/be/67/1e/be671e36-09b3-1005-e865-19e7860552f5/mza_5582217063074966225.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Sam Walker moves to the town of Drisking, Missouri one summer and quickly befriends two other kids, Kyle and Kimber. When Sam's sister, Whitney, disappears a few months later, he passes five lonely years wondering what happened to her. When more people start disappearing suddenly, the three take it upon themselves to find out what's happening to all the disappearing people and what connection the disappearances hold with the mountain outside of town.\n\nPlease be advised this show contains adult language, violent acts and triggering situations. Not advised for children under the age of 13."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© 2020 QCODE"
+        },
+        "title": {
+          "label": "Borrasca - QCODE"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/borrasca/id1513640702?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/borrasca/id1513640702?uo=2",
+          "attributes": {
+            "im:id": "1513640702"
+          }
+        },
+        "im:artist": {
+          "label": "QCODE"
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1484",
+            "term": "Drama",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-fiction-drama/id1484?uo=2",
+            "label": "Drama"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2020-05-25T00:05:00-07:00",
+          "attributes": {
+            "label": "May 25, 2020"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "Dateline NBC"
+        },
+        "im:image": [
+          {
+            "label": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts123/v4/96/b9/f6/96b9f69e-14c4-c394-98cc-b297ae9b5185/mza_14463640336747380432.jpeg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is3-ssl.mzstatic.com/image/thumb/Podcasts123/v4/96/b9/f6/96b9f69e-14c4-c394-98cc-b297ae9b5185/mza_14463640336747380432.jpeg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is2-ssl.mzstatic.com/image/thumb/Podcasts123/v4/96/b9/f6/96b9f69e-14c4-c394-98cc-b297ae9b5185/mza_14463640336747380432.jpeg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Current and classic episodes, featuring compelling true-crime mysteries, powerful documentaries and in-depth investigations."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© © Copyright © 2019 NBC News"
+        },
+        "title": {
+          "label": "Dateline NBC - NBC News"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/dateline-nbc/id1464919521?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/dateline-nbc/id1464919521?uo=2",
+          "attributes": {
+            "im:id": "1464919521"
+          }
+        },
+        "im:artist": {
+          "label": "NBC News",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/nbc-news/119945391?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1488",
+            "term": "True Crime",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-true-crime/id1488?uo=2",
+            "label": "True Crime"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2020-05-28T03:00:00-07:00",
+          "attributes": {
+            "label": "May 28, 2020"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "Up First"
+        },
+        "im:image": [
+          {
+            "label": "https://is3-ssl.mzstatic.com/image/thumb/Podcasts113/v4/3a/b6/27/3ab6274d-59a6-0ac7-c596-b907b6ef7938/mza_16293744033284542565.png/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts113/v4/3a/b6/27/3ab6274d-59a6-0ac7-c596-b907b6ef7938/mza_16293744033284542565.png/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is5-ssl.mzstatic.com/image/thumb/Podcasts113/v4/3a/b6/27/3ab6274d-59a6-0ac7-c596-b907b6ef7938/mza_16293744033284542565.png/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "NPR's Up First is the news you need to start your day. The three biggest stories of the day, with reporting and analysis from NPR News — in 10 minutes. Available weekdays by 6 a.m. ET, with hosts Rachel Martin, Noel King, David Greene and Steve Inskeep. Now available on Saturdays by 8 a.m. ET, with hosts Lulu Garcia-Navarro and Scott Simon. Subscribe and listen, then support your local NPR station at donate.npr.org."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© Copyright 2015-2020 NPR - For Personal Use Only"
+        },
+        "title": {
+          "label": "Up First - NPR"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/up-first/id1222114325?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/up-first/id1222114325?uo=2",
+          "attributes": {
+            "im:id": "1222114325"
+          }
+        },
+        "im:artist": {
+          "label": "NPR",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/npr/125443881?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1526",
+            "term": "Daily News",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-news-daily-news/id1526?uo=2",
+            "label": "Daily News"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2020-05-30T04:48:00-07:00",
+          "attributes": {
+            "label": "May 30, 2020"
+          }
+        }
+      }
+    ],
+    "updated": {
+      "label": "2020-05-30T05:59:54-07:00"
+    },
+    "rights": {
+      "label": "Copyright 2008 Apple Inc."
+    },
+    "title": {
+      "label": "iTunes Store: Top Podcasts"
+    },
+    "icon": {
+      "label": "http://itunes.apple.com/favicon.ico"
+    },
+    "link": [
+      {
+        "attributes": {
+          "rel": "alternate",
+          "type": "text/html",
+          "href": "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=us&id=1&popId=3"
+        }
+      },
+      {
+        "attributes": {
+          "rel": "self",
+          "href": "https://itunes.apple.com/us/rss/toppodcasts/limit=10/explicit=true/json"
+        }
+      }
+    ],
+    "id": {
+      "label": "https://itunes.apple.com/us/rss/toppodcasts/limit=10/explicit=true/json"
+    }
+  }
+}

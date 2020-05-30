@@ -1,0 +1,49 @@
+{
+  "resultCount": 1,
+  "results": [
+    {
+      "wrapperType": "track",
+      "kind": "podcast",
+      "artistId": 974891224,
+      "collectionId": 360084272,
+      "trackId": 360084272,
+      "artistName": "Joe Rogan",
+      "collectionName": "The Joe Rogan Experience",
+      "trackName": "The Joe Rogan Experience",
+      "collectionCensoredName": "The Joe Rogan Experience",
+      "trackCensoredName": "The Joe Rogan Experience",
+      "artistViewUrl": "https://podcasts.apple.com/us/artist/joe-rogan/974891224?uo=4",
+      "collectionViewUrl": "https://podcasts.apple.com/us/podcast/the-joe-rogan-experience/id360084272?uo=4",
+      "feedUrl": "http://joeroganexp.joerogan.libsynpro.com/rss",
+      "trackViewUrl": "https://podcasts.apple.com/us/podcast/the-joe-rogan-experience/id360084272?uo=4",
+      "artworkUrl30": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/e5/8a/10/e58a108f-f5d0-f622-c94a-13f66edd570c/mza_3025981348644196724.jpg/30x30bb.jpg",
+      "artworkUrl60": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/e5/8a/10/e58a108f-f5d0-f622-c94a-13f66edd570c/mza_3025981348644196724.jpg/60x60bb.jpg",
+      "artworkUrl100": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/e5/8a/10/e58a108f-f5d0-f622-c94a-13f66edd570c/mza_3025981348644196724.jpg/100x100bb.jpg",
+      "collectionPrice": 0.00,
+      "trackPrice": 0.00,
+      "trackRentalPrice": 0,
+      "collectionHdPrice": 0,
+      "trackHdPrice": 0,
+      "trackHdRentalPrice": 0,
+      "releaseDate": "2020-05-29T19:00:00Z",
+      "collectionExplicitness": "explicit",
+      "trackExplicitness": "explicit",
+      "trackCount": 300,
+      "country": "USA",
+      "currency": "USD",
+      "primaryGenreName": "Comedy",
+      "contentAdvisoryRating": "Explicit",
+      "artworkUrl600": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/e5/8a/10/e58a108f-f5d0-f622-c94a-13f66edd570c/mza_3025981348644196724.jpg/600x600bb.jpg",
+      "genreIds": [
+        "1303",
+        "26",
+        "1324"
+      ],
+      "genres": [
+        "Comedy",
+        "Podcasts",
+        "Society & Culture"
+      ]
+    }
+  ]
+}
