@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="ba.codingstoic.podcast.PodcastListFragment"
-        android:label="fragment_main"
+        android:label="Top podcasts"
         tools:layout="@layout/podcast_list_fragment">
         <action
             android:id="@+id/action_mainFragment_to_podcastDetailsFragment"

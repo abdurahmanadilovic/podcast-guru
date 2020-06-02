@@ -18,9 +18,10 @@
     <TextView
         android:id="@+id/podcast_title"
         style="@style/TextAppearance.AppCompat.Caption"
-        android:textSize="18sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/podcast_image"
         app:layout_constraintLeft_toRightOf="@id/podcast_image"

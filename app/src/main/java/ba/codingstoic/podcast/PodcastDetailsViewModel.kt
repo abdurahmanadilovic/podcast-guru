@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ba.codingstoic.player.Episode
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,25 +22,18 @@ class PodcastDetailsViewModel(
     val isLoading: LiveData<Boolean> = _isLoading
     private val _errors = MutableLiveData<String>()
     val errors: LiveData<String> = _errors
-    private val _podcast = MutableLiveData<Pair<Podcast, List<Episode>>>()
-    val podcastAndEpisodes: LiveData<Pair<Podcast, List<Episode>>> = _podcast
+    private val _podcast = MutableLiveData<Podcast>()
+    val podcastAndEpisodes: LiveData<Podcast> = _podcast
 
-    fun getPodcastDetails(urlId: String) {
+    fun getPodcastDetails(id: String) {
         viewModelScope.launch(coroutineContext) {
             _isLoading.value = true
 
             try {
                 val podcastDetails = withContext(ioDispatcher) {
-                    podcastRepository.getPodcast(urlId)
+                    podcastRepository.getPodcast(id)
                 }
-                val episodes = withContext(ioDispatcher) {
-                    podcastDetails.feedUrl?.let {
-                        podcastRepository.getEpisodes(it)
-                    }
-                    listOf<Episode>()
-                }
-
-                _podcast.value = Pair(podcastDetails, episodes)
+                _podcast.value = podcastDetails
             } catch (ex: Exception) {
                 _errors.value = ex.localizedMessage
             }

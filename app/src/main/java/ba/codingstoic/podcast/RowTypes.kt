@@ -43,7 +43,6 @@ class PodcastSectionHeader(private val name: String) : Item() {
 
 class PodcastDetailsItem(val podcast: Podcast) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-        viewHolder.podcast_details_podcast_row_title.text = podcast.name
         Picasso.get().load(podcast.imageUrl).into(viewHolder.podcast_details_podcast_row_image)
     }
 
@@ -54,7 +53,6 @@ class PodcastDetailsItem(val podcast: Podcast) : Item() {
 class EpisodeRow(val episode: Episode) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.episode_row_title.text = episode.title
-        Picasso.get().load(episode.imageUrl).into(viewHolder.episode_row_image)
     }
 
     override fun getLayout(): Int = R.layout.podcast_details_episode_row

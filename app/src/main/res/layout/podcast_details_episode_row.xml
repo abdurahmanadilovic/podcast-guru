@@ -5,35 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/episode_row_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
     <TextView
         android:id="@+id/episode_row_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="10dp"
         android:gravity="start"
-        app:layout_constraintBottom_toBottomOf="@+id/episode_row_image"
-        app:layout_constraintEnd_toStartOf="@+id/episode_row_play_button"
-        app:layout_constraintStart_toEndOf="@+id/episode_row_image"
-        app:layout_constraintTop_toTopOf="@+id/episode_row_image"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Episode title" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/episode_row_play_button"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/episode_row_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/episode_row_image"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_play_circle_outline_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

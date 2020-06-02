@@ -131,7 +131,7 @@ val dataModule = module {
             )
             .build()
 
-        PodcastRepository(get(), retrofit.create(FeedSource::class.java))
+        PodcastRepository(get())
     }
 
 }

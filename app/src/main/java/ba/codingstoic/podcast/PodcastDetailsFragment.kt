@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,6 +37,8 @@ class PodcastDetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         podcastId = arguments?.getString(podcastIdArgument) ?: ""
+        (activity as AppCompatActivity).supportActionBar?.title =
+            arguments?.getString(podcastTitleArgument)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,10 +50,10 @@ class PodcastDetailsFragment : Fragment() {
             podcast_details_swipe_refresh.isRefreshing = it
         })
 
-        podcastDetailsViewModel.podcastAndEpisodes.observe(viewLifecycleOwner, Observer { pair ->
+        podcastDetailsViewModel.podcastAndEpisodes.observe(viewLifecycleOwner, Observer { podcast ->
             adapter.clear()
-            adapter.add(PodcastDetailsItem(pair.first))
-            adapter.addAll(pair.second.map { EpisodeRow(it) })
+            adapter.add(PodcastDetailsItem(podcast))
+            adapter.addAll(podcast.episodes.map { EpisodeRow(it) })
         })
 
         podcastDetailsViewModel.errors.observe(viewLifecycleOwner, Observer {
@@ -75,6 +78,7 @@ class PodcastDetailsFragment : Fragment() {
 
     companion object {
         const val podcastIdArgument = "podcast_id"
+        const val podcastTitleArgument = "podcast_title"
     }
 
 }
