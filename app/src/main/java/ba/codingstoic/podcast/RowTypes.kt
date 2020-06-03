@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.podcast_section_header.*
 class PodcastItem(val podcast: Podcast) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.podcast_title.text = podcast.name
+        viewHolder.podcast_image.transitionName = podcast.id
         Picasso.get().load(podcast.imageUrl).into(viewHolder.podcast_image)
     }
 
@@ -43,6 +44,7 @@ class PodcastSectionHeader(private val name: String) : Item() {
 
 class PodcastDetailsItem(val podcast: Podcast) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+        viewHolder.podcast_details_podcast_row_image.transitionName = podcast.id
         Picasso.get().load(podcast.imageUrl).into(viewHolder.podcast_details_podcast_row_image)
     }
 

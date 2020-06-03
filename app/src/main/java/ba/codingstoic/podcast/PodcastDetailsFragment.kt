@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionInflater
 import ba.codingstoic.R
 import ba.codingstoic.player.PlayerViewModel
 import ba.codingstoic.utils.toastIt
@@ -37,10 +37,14 @@ class PodcastDetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         podcastId = arguments?.getString(podcastIdArgument) ?: ""
+        sharedElementEnterTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        postponeEnterTransition()
 
         val adapter = GroupAdapter<GroupieViewHolder>()
 
@@ -52,6 +56,7 @@ class PodcastDetailsFragment : Fragment() {
             adapter.clear()
             adapter.add(PodcastDetailsItem(podcast))
             adapter.addAll(podcast.episodes.map { EpisodeRow(it) })
+            startPostponedEnterTransition()
         })
 
         podcastDetailsViewModel.errors.observe(viewLifecycleOwner, Observer {
