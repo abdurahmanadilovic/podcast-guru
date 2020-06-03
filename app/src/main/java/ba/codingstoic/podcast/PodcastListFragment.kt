@@ -24,7 +24,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class PodcastListFragment : Fragment() {
     private val podcastListViewModel: PodcastListViewModel by viewModel()
-    private val playerViewModel: PlayerViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +37,6 @@ class PodcastListFragment : Fragment() {
 
         val newAdapter = GroupAdapter<GroupieViewHolder>()
         val topSection = Section()
-        topSection.setHeader(PodcastSectionHeader("Top Podcasts"))
-
         newAdapter.add(topSection)
 
         newAdapter.setOnItemClickListener { item, _ ->

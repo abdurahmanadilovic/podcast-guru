@@ -37,8 +37,6 @@ class PodcastDetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         podcastId = arguments?.getString(podcastIdArgument) ?: ""
-        (activity as AppCompatActivity).supportActionBar?.title =
-            arguments?.getString(podcastTitleArgument)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

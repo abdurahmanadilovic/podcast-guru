@@ -20,8 +20,13 @@
     </fragment>
     <fragment
         android:id="@+id/podcastDetailsFragment"
-        android:name="ba.codingstoic.podcast.PodcastDetailsFragment"
-        android:label="PodcastDetailsFragment" />
+        android:label="{podcast_title}"
+        android:name="ba.codingstoic.podcast.PodcastDetailsFragment" >
+        <argument
+            android:name="podcast_title"
+            app:argType="string"
+            android:defaultValue="Details" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="ba.codingstoic.user.LoginFragment"
