@@ -1,9 +1,7 @@
 package ba.codingstoic.podcast
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,18 +19,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * Created by Abdurahman Adilovic on 3/22/20.
  */
 
-class PodcastDetailsFragment : Fragment() {
+class PodcastDetailsFragment : Fragment(R.layout.podcast_details_view) {
     private val podcastDetailsViewModel by viewModel<PodcastDetailsViewModel>()
     private val playerViewModel by sharedViewModel<PlayerViewModel>()
-    lateinit var podcastId: String
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.podcast_details_view, container, false)
-    }
+    private lateinit var podcastId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

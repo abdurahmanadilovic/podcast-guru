@@ -2,9 +2,7 @@ package ba.codingstoic.podcast
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -21,17 +19,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 /**
- * A simple [Fragment] subclass.
+ * Created by Abdurahman Adilovic on 1/20/20.
  */
-class PodcastListFragment : Fragment() {
+class PodcastListFragment : Fragment(R.layout.podcast_list_fragment) {
     private val podcastListViewModel: PodcastListViewModel by viewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.podcast_list_fragment, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
