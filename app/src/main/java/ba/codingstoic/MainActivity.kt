@@ -1,7 +1,6 @@
 package ba.codingstoic
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -9,9 +8,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import ba.codingstoic.databinding.ActivityMainBinding
 import ba.codingstoic.player.PlayerViewModel
+import ba.codingstoic.podcast.EpisodeRow
 import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,9 +40,24 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
         binding.playerView.player = exoPlayer
 
-        playerViewModel.currentlyPlaying.observe(this, Observer {
-            binding.mainActivityBottomSheet.visibility = View.VISIBLE
-            binding.currentEpisodeTitle.text = it.title
+        val collapsedBehaviour = BottomSheetBehavior.from(binding.mainActivityCollapsedPlayer)
+        collapsedBehaviour.state = BottomSheetBehavior.STATE_HIDDEN
+
+        binding.mainActivityCollapsedPlayer.setOnClickListener {
+            collapsedBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+
+        val playlistAdapter = GroupAdapter<GroupieViewHolder>()
+
+        playerViewModel.currentlyPlaying.observe(this, Observer { episode ->
+            binding.currentEpisodeTitle.text = episode.title
+            playlistAdapter.clear()
+            playlistAdapter.addAll(playerViewModel.playlist.map { EpisodeRow(it) })
         })
+
+        binding.playlistRv.apply {
+            adapter = playlistAdapter
+            layoutManager = LinearLayoutManager(this@MainActivity)
+        }
     }
 }

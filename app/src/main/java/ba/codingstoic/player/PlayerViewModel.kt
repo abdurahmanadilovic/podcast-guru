@@ -15,7 +15,7 @@ class PlayerViewModel(
     private val dataSourceFactory: DataSource.Factory
 ) : ViewModel() {
     private val _currentlyPlaying = MutableLiveData<Episode>()
-    private val playlist = mutableListOf<Episode>()
+    val playlist = mutableListOf<Episode>()
     val currentlyPlaying: LiveData<Episode> = _currentlyPlaying
     private var currentIndex = 0
     private val listener = object : Player.EventListener {
