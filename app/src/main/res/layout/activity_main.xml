@@ -54,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/mini_player_margins"
             android:textStyle="bold"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/mini_player_background"
             app:layout_constraintLeft_toLeftOf="@id/mini_player_background"
             app:layout_constraintRight_toLeftOf="@id/player_view"

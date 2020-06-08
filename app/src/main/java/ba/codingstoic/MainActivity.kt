@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ba.codingstoic.databinding.ActivityMainBinding
 import ba.codingstoic.player.PlayerViewModel
 import ba.codingstoic.podcast.EpisodeRow
+import ba.codingstoic.podcast.SectionHeader
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import com.xwray.groupie.Section
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -48,12 +50,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         val playlistAdapter = GroupAdapter<GroupieViewHolder>()
+        val playlistSection = Section()
+        playlistSection.setHeader(SectionHeader("Next"))
 
         playerViewModel.currentlyPlaying.observe(this, Observer { episode ->
             binding.currentEpisodeTitle.text = episode.title
-            playlistAdapter.clear()
-            playlistAdapter.addAll(playerViewModel.playlist.map { EpisodeRow(it) })
+            playlistSection.clear()
+            playlistSection.addAll(playerViewModel.playlist.map { EpisodeRow(it) })
         })
+
+        playlistAdapter.add(playlistSection)
 
         binding.playlistRv.apply {
             adapter = playlistAdapter

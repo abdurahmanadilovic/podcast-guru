@@ -35,11 +35,12 @@ class PlayerViewModel(
         exoPlayer.removeListener(listener)
     }
 
-    fun play(episodes: List<Episode>) {
+    fun play(currentEpisode: Episode, episodes: List<Episode>) {
         playlist.clear()
-        playlist.addAll(episodes)
+        playlist.add(currentEpisode)
+        playlist.addAll(episodes.filter { it.mp3Url != currentEpisode.mp3Url })
 
-        val mediaSources = episodes.map {
+        val mediaSources = playlist.map {
             ProgressiveMediaSource.Factory(dataSourceFactory)
                 .createMediaSource(Uri.parse(it.mp3Url))
         }.toTypedArray()

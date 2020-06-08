@@ -33,7 +33,7 @@ class PodcastItem(val podcast: Podcast) : Item() {
     }
 }
 
-class PodcastSectionHeader(private val name: String) : Item() {
+class SectionHeader(private val name: String) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.podcast_section_header.text = name
     }

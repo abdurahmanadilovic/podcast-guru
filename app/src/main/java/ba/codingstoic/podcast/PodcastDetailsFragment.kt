@@ -59,7 +59,10 @@ class PodcastDetailsFragment : Fragment(R.layout.podcast_details_view) {
 
         adapter.setOnItemClickListener { item, _ ->
             if (item is EpisodeRow) {
-                playerViewModel.play(listOf(item.episode))
+                val episodes = podcastDetailsViewModel.podcastAndEpisodes.value?.episodes ?: listOf(
+                    item.episode
+                )
+                playerViewModel.play(item.episode, episodes)
             }
         }
 
