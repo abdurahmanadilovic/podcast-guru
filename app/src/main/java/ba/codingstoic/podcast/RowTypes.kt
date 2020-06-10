@@ -61,3 +61,14 @@ class EpisodeRow(val episode: Episode) : Item() {
 
 }
 
+
+class PlaylistRow(val episode: Episode) : Item() {
+    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+        viewHolder.episode_row_title.text = episode.title
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.playlist_row
+    }
+}
+
