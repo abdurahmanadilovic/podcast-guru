@@ -12,7 +12,8 @@ import com.google.android.exoplayer2.upstream.DataSource
 
 class PlayerViewModel(
     private val exoPlayer: ExoPlayer,
-    private val dataSourceFactory: DataSource.Factory
+    private val dataSourceFactory: DataSource.Factory,
+    private val mediaSessionConnection: MediaSessionConnection
 ) : ViewModel() {
     private val _currentlyPlaying = MutableLiveData<Episode>()
     private val _playlist = mutableListOf<Episode>()

@@ -1,9 +1,11 @@
 package ba.codingstoic.di
 
+import android.content.ComponentName
 import android.content.Context
 import android.content.SharedPreferences
-import ba.codingstoic.data.FeedSource
 import ba.codingstoic.data.NetworkSource
+import ba.codingstoic.player.MediaSessionConnection
+import ba.codingstoic.player.PlayerService
 import ba.codingstoic.podcast.PodcastRepository
 import ba.codingstoic.user.CookieManager
 import ba.codingstoic.user.UserSession
@@ -132,6 +134,13 @@ val dataModule = module {
             .build()
 
         PodcastRepository(get())
+    }
+
+    single {
+        MediaSessionConnection(
+            androidContext(),
+            ComponentName(androidContext(), PlayerService::class.java)
+        )
     }
 
 }
