@@ -19,6 +19,7 @@ import androidx.media.MediaBrowserServiceCompat
 import ba.codingstoic.MainActivity
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
 import org.koin.android.ext.android.inject
 
@@ -120,6 +121,12 @@ class PlayerService : MediaBrowserServiceCompat() {
 
             playerNotificationManager.setPlayer(exoPlayer)
             playerNotificationManager.setMediaSessionToken(it)
+        }
+
+        MediaSessionConnector(mediaSession).also {
+            val playbackPreparer = PlaybackPreparer(exoPlayer)
+            it.setPlayer(exoPlayer)
+            it.setPlaybackPreparer(playbackPreparer)
         }
     }
 

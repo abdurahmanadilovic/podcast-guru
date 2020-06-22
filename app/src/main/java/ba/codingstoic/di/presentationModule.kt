@@ -1,11 +1,15 @@
 package ba.codingstoic.di
 
+import android.content.ComponentName
+import ba.codingstoic.player.MediaSessionConnection
+import ba.codingstoic.player.PlayerService
 import ba.codingstoic.player.PlayerViewModel
 import ba.codingstoic.podcast.PodcastDetailsViewModel
 import ba.codingstoic.podcast.PodcastListViewModel
 import ba.codingstoic.user.LoginViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import kotlin.coroutines.CoroutineContext
@@ -21,8 +25,14 @@ val presentationModule = module {
     factory {
         Dispatchers.IO
     }
+    single {
+        MediaSessionConnection(
+            androidContext(),
+            ComponentName(androidContext(), PlayerService::class.java)
+        )
+    }
     viewModel {
-        PlayerViewModel(get(), get())
+        PlayerViewModel(get(), get(), get())
     }
 
     viewModel {
