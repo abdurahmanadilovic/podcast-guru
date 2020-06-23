@@ -25,12 +25,6 @@ val presentationModule = module {
     factory {
         Dispatchers.IO
     }
-    single {
-        MediaSessionConnection(
-            androidContext(),
-            ComponentName(androidContext(), PlayerService::class.java)
-        )
-    }
     viewModel {
         PlayerViewModel(get(), get(), get())
     }

@@ -42,11 +42,7 @@ class PlayerService : MediaBrowserServiceCompat() {
         clientUid: Int,
         rootHints: Bundle?
     ): BrowserRoot? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onBind(intent: Intent?): IBinder? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return BrowserRoot("root", rootHints)
     }
 
     override fun onCreate() {
