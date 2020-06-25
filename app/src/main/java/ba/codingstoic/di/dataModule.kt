@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import ba.codingstoic.data.NetworkSource
 import ba.codingstoic.player.MediaSessionConnection
+import ba.codingstoic.player.PlaybackPreparer
 import ba.codingstoic.player.PlayerService
 import ba.codingstoic.podcast.PodcastRepository
 import ba.codingstoic.user.CookieManager
@@ -143,4 +144,7 @@ val dataModule = module {
         )
     }
 
+    single {
+        PlaybackPreparer(get())
+    }
 }

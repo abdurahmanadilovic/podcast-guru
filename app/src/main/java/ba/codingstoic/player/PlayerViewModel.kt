@@ -1,6 +1,7 @@
 package ba.codingstoic.player
 
 import android.net.Uri
+import android.support.v4.media.MediaMetadataCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,7 +14,8 @@ import com.google.android.exoplayer2.upstream.DataSource
 class PlayerViewModel(
     private val exoPlayer: ExoPlayer,
     private val dataSourceFactory: DataSource.Factory,
-    private val mediaSessionConnection: MediaSessionConnection
+    private val mediaSessionConnection: MediaSessionConnection,
+    private val playbackPreparer: PlaybackPreparer
 ) : ViewModel() {
     private val _currentlyPlaying = MutableLiveData<Episode>()
     private val _playlist = mutableListOf<Episode>()
@@ -44,11 +46,16 @@ class PlayerViewModel(
         _playlist.addAll(episodes.filter { it.mp3Url != currentEpisode.mp3Url })
 
         val mediaSources = (listOf(currentEpisode) + _playlist).map {
+            val metaData = MediaMetadataCompat.Builder()
+                .putString(MediaMetadataCompat.METADATA_KEY_DISPLAY_TITLE, it.title)
+                .build()
             ProgressiveMediaSource.Factory(dataSourceFactory)
+                .setTag(metaData.description)
                 .createMediaSource(Uri.parse(it.mp3Url))
         }.toTypedArray()
-        exoPlayer.prepare(ConcatenatingMediaSource(*mediaSources))
-        exoPlayer.playWhenReady = true
+
+        playbackPreparer.mediaSource = ConcatenatingMediaSource(*mediaSources)
+        mediaSessionConnection.transportControls.playFromMediaId(currentEpisode.mp3Url, null)
         currentIndex = 0
         _currentlyPlaying.value = currentEpisode
     }

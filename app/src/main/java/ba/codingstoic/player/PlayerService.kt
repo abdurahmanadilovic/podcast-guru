@@ -8,7 +8,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
-import android.os.IBinder
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.session.MediaControllerCompat
 import android.support.v4.media.session.MediaSessionCompat
@@ -21,11 +20,13 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 
 class PlayerService : MediaBrowserServiceCompat() {
     private lateinit var notificationManager: NotificationManagerCompat
     private val exoPlayer: ExoPlayer by inject()
+    private val playbackPreparer: PlaybackPreparer by inject()
     private val nowPlayingChannelId: String = "ba.codingstoic.NOW_PLAYING"
     private val nowPlayingNotificationId: Int = 1
     private lateinit var mediaSession: MediaSessionCompat
@@ -120,7 +121,6 @@ class PlayerService : MediaBrowserServiceCompat() {
         }
 
         MediaSessionConnector(mediaSession).also {
-            val playbackPreparer = PlaybackPreparer(exoPlayer)
             it.setPlayer(exoPlayer)
             it.setPlaybackPreparer(playbackPreparer)
         }

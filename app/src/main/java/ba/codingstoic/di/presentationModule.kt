@@ -26,7 +26,7 @@ val presentationModule = module {
         Dispatchers.IO
     }
     viewModel {
-        PlayerViewModel(get(), get(), get())
+        PlayerViewModel(get(), get(), get(), get())
     }
 
     viewModel {

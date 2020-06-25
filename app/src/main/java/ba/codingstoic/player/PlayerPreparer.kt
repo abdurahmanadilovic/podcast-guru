@@ -13,7 +13,6 @@ import com.google.android.exoplayer2.source.MediaSource
 class PlaybackPreparer(val exoPlayer: ExoPlayer) : MediaSessionConnector.PlaybackPreparer {
     var mediaSource: MediaSource? = null
 
-
     override fun onPrepareFromSearch(query: String, playWhenReady: Boolean, extras: Bundle) {
     }
 
