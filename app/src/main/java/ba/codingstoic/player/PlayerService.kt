@@ -20,7 +20,6 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
-import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 
 class PlayerService : MediaBrowserServiceCompat() {
@@ -75,11 +74,13 @@ class PlayerService : MediaBrowserServiceCompat() {
                     val controller = MediaControllerCompat(this@PlayerService, it)
 
                     override fun getCurrentContentText(player: Player): String? {
-                        return controller.metadata?.description?.description?.toString()
+                        val episode = player.currentTag as? Episode
+                        return episode?.date
                     }
 
                     override fun getCurrentContentTitle(player: Player): String {
-                        return controller.metadata?.description?.title?.toString() ?: "Buffering..."
+                        val episode = player.currentTag as? Episode
+                        return episode?.title ?: "Buffering..."
                     }
 
                     override fun getCurrentLargeIcon(
