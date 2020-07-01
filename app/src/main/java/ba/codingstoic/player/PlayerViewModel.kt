@@ -12,7 +12,9 @@ import com.google.android.exoplayer2.upstream.DataSource
 
 class PlayerViewModel(
     private val exoPlayer: ExoPlayer,
-    private val dataSourceFactory: DataSource.Factory
+    private val dataSourceFactory: DataSource.Factory,
+    private val mediaSessionConnection: MediaSessionConnection,
+    private val playbackPreparer: PlaybackPreparer
 ) : ViewModel() {
     private val _currentlyPlaying = MutableLiveData<Episode>()
     private val _playlist = mutableListOf<Episode>()
@@ -38,35 +40,32 @@ class PlayerViewModel(
     }
 
     fun play(currentEpisode: Episode, episodes: List<Episode>) {
-        _playlist.clear()
-        _playlist.add(currentEpisode)
-        _playlist.addAll(episodes.filter { it.mp3Url != currentEpisode.mp3Url })
-
-        val mediaSources = (listOf(currentEpisode) + _playlist).map {
-            ProgressiveMediaSource.Factory(dataSourceFactory)
-                .createMediaSource(Uri.parse(it.mp3Url))
-        }.toTypedArray()
-        exoPlayer.prepare(ConcatenatingMediaSource(*mediaSources))
-        exoPlayer.playWhenReady = true
-        currentIndex = 0
-        _currentlyPlaying.value = currentEpisode
+        val newPlaylist = episodes.filter { it.mp3Url != currentEpisode.mp3Url }
+        createPlaylist(currentEpisode, newPlaylist)
     }
 
     fun playFromPlaylist(next: Episode) {
         val current = _playlist[currentIndex]
         val newPlaylist =
             _playlist.filter { it.mp3Url != next.mp3Url && it.mp3Url != current.mp3Url }
+        createPlaylist(next, newPlaylist)
+    }
 
+    private fun createPlaylist(
+        next: Episode,
+        newPlaylist: List<Episode>
+    ) {
         _playlist.clear()
         _playlist.add(next)
         _playlist.addAll(newPlaylist)
 
         val mediaSources = (listOf(next) + _playlist).map {
             ProgressiveMediaSource.Factory(dataSourceFactory)
+                .setTag(it)
                 .createMediaSource(Uri.parse(it.mp3Url))
         }.toTypedArray()
-        exoPlayer.prepare(ConcatenatingMediaSource(*mediaSources))
-        exoPlayer.playWhenReady = true
+        playbackPreparer.mediaSource = ConcatenatingMediaSource(*mediaSources)
+        mediaSessionConnection.transportControls.playFromMediaId(next.mp3Url, null)
         currentIndex = 0
         _currentlyPlaying.value = next
     }
