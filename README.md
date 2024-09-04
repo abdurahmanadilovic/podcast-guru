@@ -2,7 +2,7 @@
 
 ## Background
 
-This is an example project built for a series of blog posts I have written on my [personal blog](https://www.codingstoic.com/index.php/2020/01/20/building-a-podcast-app-series-1-mini-in-app-player/) and on [dev.to](https://dev.to/abdurahmanadilovic/building-a-podcast-app-series-1-mini-in-app-player-7k0) under the title "**How to build 
+This is an example project built for a series of blog posts I have written on my on [dev.to](https://dev.to/abdurahmanadilovic/building-a-podcast-app-series-1-mini-in-app-player-7k0) under the title "**How to build 
 a podcast app in Kotlin using ExoPlayer**". 
 
 ## Architecture
